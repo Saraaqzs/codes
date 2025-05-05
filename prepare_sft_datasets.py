@@ -298,7 +298,7 @@ if __name__ == "__main__":
         mode = "train"
     )
     with open("./data/sft_sdss_train_text2sql.json", "w") as f:
-        f.write(json.dumps(bird_train, indent = 2, ensure_ascii = False))
+        f.write(json.dumps(sdss_train, indent = 2, ensure_ascii = False))
 
     print("---------------------------------------------------------------------------")
     print("preparing dev sets.....")
@@ -314,7 +314,7 @@ if __name__ == "__main__":
         mode="dev"
     )
     with open("./data/sft_sdss_dev_text2sql.json", "w") as f:
-        f.write(json.dumps(spider_dk, indent=2, ensure_ascii=False))
+        f.write(json.dumps(sdss_dev, indent=2, ensure_ascii=False))
         
         
     #     
