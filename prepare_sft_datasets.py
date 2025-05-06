@@ -286,37 +286,67 @@ def spider_style_dataset(
 if __name__ == "__main__":
     print("preparing training sets.....")
     
-    print("sdss-train")
+    print("oncomx-train")
     # How many examples?
-    sdss_train = spider_style_dataset(
-        dataset_path = "./data/sft_data_collections/sdss/train/train.json",
-        db_path = "./data/sft_data_collections/sdss/train/train_databases",
-        db_content_index_path = "./data/sft_data_collections/sdss/train/db_contents_index",
-        source = "bird-train",
-        table_json_path = "./data/sft_data_collections/sdss/train/train_tables.json",
+    oncomx_train = spider_style_dataset(
+        dataset_path = "./data/sft_data_collections/oncomx/train.json",
+        db_path = "./data/sft_data_collections/oncomx/",
+        db_content_index_path = "./data/sft_data_collections/oncomx/db_contents_index",
+        source = "science-benchhmark",
+        table_json_path = "./data/sft_data_collections/oncomx/tables.json",
         use_evidence = False,
         mode = "train"
     )
-    with open("./data/sft_sdss_train_text2sql.json", "w") as f:
-        f.write(json.dumps(sdss_train, indent = 2, ensure_ascii = False))
+    with open("./data/sft_oncomx_train_text2sql.json", "w") as f:
+        f.write(json.dumps(oncomx_train, indent = 2, ensure_ascii = False))
 
     print("---------------------------------------------------------------------------")
     print("preparing dev sets.....")
 
-    print("sdss-dev")
-    sdss_dev = spider_style_dataset(
-        dataset_path="./data/sft_data_collections/sdss/dev/dev.json",
-        db_path="./data/sft_data_collections/sdss/dev/dev_database",
-        db_content_index_path="./data/sft_data_collections/sdss/dev/db_contents_index",
-        source="spider-dk",
-        table_json_path="./data/sft_data_collections/sdss/dev/dev_tables.json",
+    print("oncomx-dev")
+    oncomx_dev = spider_style_dataset(
+        dataset_path="./data/sft_data_collections/oncomx/dev.json",
+        db_path="./data/sft_data_collections/oncomx/",
+        db_content_index_path="./data/sft_data_collections/oncomx/db_contents_index",
+        source="science-benchmark",
+        table_json_path="./data/sft_data_collections/oncomx/tables.json",
         use_evidence=False,
         mode="dev"
     )
-    with open("./data/sft_sdss_dev_text2sql.json", "w") as f:
-        f.write(json.dumps(sdss_dev, indent=2, ensure_ascii=False))
-        
-        
+    with open("./data/sft_oncomx_dev_text2sql.json", "w") as f:
+        f.write(json.dumps(oncomx_dev, indent=2, ensure_ascii=False))
+    
+    #print("sdss-train")
+    ## How many examples?
+    #sdss_train = spider_style_dataset(
+    #    dataset_path = "./data/sft_data_collections/sdss/train.json",
+    #    db_path = "./data/sft_data_collections/sdss/",
+    #    db_content_index_path = "./data/sft_data_collections/sdss/db_contents_index",
+    #    source = "science-benchhmark",
+    #    table_json_path = "./data/sft_data_collections/sdss/train_tables.json",
+    #    use_evidence = False,
+    #    mode = "train"
+    #)
+    #with open("./data/sft_sdss_train_text2sql.json", "w") as f:
+    #    f.write(json.dumps(sdss_train, indent = 2, ensure_ascii = False))
+#
+    #print("---------------------------------------------------------------------------")
+    #print("preparing dev sets.....")
+#
+    #print("sdss-dev")
+    #sdss_dev = spider_style_dataset(
+    #    dataset_path="./data/sft_data_collections/sdss/dev.json",
+    #    db_path="./data/sft_data_collections/sdss/",
+    #    db_content_index_path="./data/sft_data_collections/sdss/db_contents_index",
+    #    source="science-benchmark",
+    #    table_json_path="./data/sft_data_collections/sdss/dev_tables.json",
+    #    use_evidence=False,
+    #    mode="dev"
+    #)
+    #with open("./data/sft_sdss_dev_text2sql.json", "w") as f:
+    #    f.write(json.dumps(sdss_dev, indent=2, ensure_ascii=False))
+    ##    
+    ##    
     #     
     # print("spider-train")
     # spider_train = []
@@ -364,33 +394,33 @@ if __name__ == "__main__":
     # with open("./data/sft_bird_with_evidence_train_text2sql.json", "w") as f:
     #     f.write(json.dumps(bird_with_evidence_train, indent = 2, ensure_ascii = False))
     # 
-    # print("Bank_Financials train")
-    # # Bank_Financials train set
-    # bank_train = spider_style_dataset(
-    #     dataset_path = "./data/sft_data_collections/domain_datasets/Bank_Financials_train.json", 
-    #     db_path = "./data/sft_data_collections/domain_datasets/databases", 
-    #     db_content_index_path = "./data/sft_data_collections/domain_datasets/db_contents_index",
-    #     source = "bank_financials-train",
-    #     table_json_path = "./data/sft_data_collections/domain_datasets/tables.json",
-    #     use_evidence = True,
-    #     mode = "train"
-    # )
-    # with open("./data/sft_bank_financials_train_text2sql.json", "w") as f:
-    #     f.write(json.dumps(bank_train , indent = 2, ensure_ascii = False))
-    # 
-    # print("Aminer_Simplified train")
-    # # Aminer_Simplified train set
-    # aminer_train = spider_style_dataset(
-    #     dataset_path = "./data/sft_data_collections/domain_datasets/Aminer_Simplified_train.json", 
-    #     db_path = "./data/sft_data_collections/domain_datasets/databases", 
-    #     db_content_index_path = "./data/sft_data_collections/domain_datasets/db_contents_index",
-    #     source = "Aminer_Simplified-train",
-    #     table_json_path = "./data/sft_data_collections/domain_datasets/tables.json",
-    #     use_evidence = True,
-    #     mode = "train"
-    # )
-    # with open("./data/sft_aminer_simplified_train_text2sql.json", "w") as f:
-    #     f.write(json.dumps(aminer_train , indent = 2, ensure_ascii = False))
+    #print("Bank_Financials train")
+    ## Bank_Financials train set
+    #bank_train = spider_style_dataset(
+    #    dataset_path = "./data/sft_data_collections/domain_datasets/Bank_Financials_train.json", 
+    #    db_path = "./data/sft_data_collections/domain_datasets/databases", 
+    #    db_content_index_path = "./data/sft_data_collections/domain_datasets/db_contents_index",
+    #    source = "bank_financials-train",
+    #    table_json_path = "./data/sft_data_collections/domain_datasets/tables.json",
+    #    use_evidence = True,
+    #    mode = "train"
+    #)
+    #with open("./data/sft_bank_financials_train_text2sql.json", "w") as f:
+    #    f.write(json.dumps(bank_train , indent = 2, ensure_ascii = False))
+    #
+    #print("Aminer_Simplified train")
+    ## Aminer_Simplified train set
+    #aminer_train = spider_style_dataset(
+    #    dataset_path = "./data/sft_data_collections/domain_datasets/Aminer_Simplified_train.json", 
+    #    db_path = "./data/sft_data_collections/domain_datasets/databases", 
+    #    db_content_index_path = "./data/sft_data_collections/domain_datasets/db_contents_index",
+    #    source = "Aminer_Simplified-train",
+    #    table_json_path = "./data/sft_data_collections/domain_datasets/tables.json",
+    #    use_evidence = True,
+    #    mode = "train"
+    #)
+    #with open("./data/sft_aminer_simplified_train_text2sql.json", "w") as f:
+    #    f.write(json.dumps(aminer_train , indent = 2, ensure_ascii = False))
     # 
     # print("Spider + BIRD + Bank_Financials + Aminer_Simplified train set (ALL MERGED)")
     # # merge all available training data
