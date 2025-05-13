@@ -16,9 +16,9 @@ mkdir oncomx
 cd oncomx
 
 #python ../../../../pg2sqlite/initial-sync/py/convert-schema.py "postgresql://uzh_user:bigdata%40uzh@160.85.252.195:5433/oncomx_v1_0_25?options=-csearch_path%3oncomx_v1_0_25" oncomx_v1_0_25_small.db
-python ../../../../pg2sqlite/initial-sync/py/convert-schema.py "postgresql://uzh_user:bigdata%40uzh@160.85.252.195:5433/oncomx_v1_0_25?options=-csearch_path%3Doncomx_v1_0_25" oncomx_v1_0_25_small.db
+#python ../../../../pg2sqlite/initial-sync/py/convert-schema.py "postgresql://uzh_user:bigdata%40uzh@160.85.252.195:5433/oncomx_v1_0_25?options=-csearch_path%3Doncomx_v1_0_25" oncomx_v1_0_25_small.db
 python ../../../../pg2sqlite/initial-sync/py/export_to_csv.py  "postgresql://uzh_user:bigdata%40uzh@160.85.252.195:5433/oncomx_v1_0_25?options=-csearch_path%3Doncomx_v1_0_25" 'oncomx_v1_0_25' oncomx_v1_0_25_small_dir
-python ../../../../pg2sqlite/initial-sync/py/import_csv_to_sqlite.py oncomx_v1_0_25_small_dir oncomx_v1_0_25_small.sqlite
+python ../../../../pg2sqlite/initial-sync/py/import_csv_to_sqlite.py oncomx_v1_0_25_small_dir oncomx_v1_0_25_small.sqlite oncomx_v1_0_25_small.sql
 mkdir oncomx_v1_0_25_small
 mv oncomx_v1_0_25_small.sqlite ./oncomx_v1_0_25_small/oncomx_v1_0_25_small.sqlite
 
