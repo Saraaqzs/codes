@@ -264,5 +264,5 @@ if __name__ == "__main__":
         with open("pred_sqls.txt", "w", encoding = 'utf-8') as f:
             for sql in predicted_sqls:
                 f.write(sql + "\n")
-        print("Execution accuracy:")
-        os.system('python -u evaluate_ex.py --pred pred_sqls.txt --gold {} --db ./data/sft_data_collections/oncomx/oncomx_v1_0_25_small/oncomx_v1_0_25_small.sqlite'.format(opt.dataset_path))
+        # print("Execution accuracy:")
+        # os.system('python -u evaluate_ex.py --pred pred_sqls.txt --gold {} --db ./data/sft_data_collections/oncomx/oncomx_v1_0_25_small/oncomx_v1_0_25_small.sqlite'.format(opt.dataset_path))
