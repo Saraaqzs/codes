@@ -9,6 +9,7 @@ CUDA_VISIBLE_DEVICES=0 python -u text2sql_few_shot.py \
 --column_num 106 \
 --dataset_path ./data/sft_oncomx_dev_text2sql.json \
 --demonstration_set_path ./data/sft_oncomx_train_text2sql.json \
+__pred_tag v_1
 --num_of_demonstrations 1 \
 --max_tokens 8192 \
 --max_new_tokens 256
