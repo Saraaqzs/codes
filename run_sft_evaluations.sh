@@ -1,12 +1,12 @@
 set -e
 
-# --------------- SDSS dev --------------- #
+# --------------- oncomx dev --------------- #
 CUDA_VISIBLE_DEVICES=0 python -u text2sql_zero_shot.py \
---llm_path seeklhy/codes-1b-sdss \
---sic_path ./sic_ckpts/sic_sdss \
---table_num 6 \
---column_num 61 \
---dataset_path ./data/sft_sdss_dev_text2sql.json \
+--llm_path seeklhy/codes-1b \
+--sic_path ./sic_ckpts/sic_oncomx \
+--table_num 25 \
+--column_num 106 \
+--dataset_path ./data/sft_oncomx_dev_text2sql.json \
 --max_tokens 4096 \
 --max_new_tokens 256
 
