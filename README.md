@@ -141,7 +141,8 @@ The latest version of the transformers package now includes Flash-Attention for 
    ```
 2. Install the `flash-attn` package:
    ```
-   pip install flash-attn
+   ~pip install flash-attn~
+   MAX_JOBS=4 pip install flash-attn --no-build-isolation
    ```
 This method simplifies the process by utilizing the in-built support for Flash-Attention in the recent transformers release. To activate Flash-Attention in the code, incorporate the parameter `attn_implementation = "flash_attention_2"` when invoking the `AutoModelForCausalLM.from_pretrained()` function. For additional information and guidance, please consult the following resource: [Combining Starcoder and Flash-Attention 2](https://huggingface.co/docs/transformers/model_doc/gpt_bigcode#combining-starcoder-and-flash-attention-2).
 
