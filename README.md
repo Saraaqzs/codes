@@ -140,9 +140,7 @@ The latest version of the transformers package now includes Flash-Attention for 
    pip install transformers==4.38.2
    ```
 2. Install the `flash-attn` package:
-   ~```
-   ~pip install flash-attn~
-   ```~
+
    ```
    python -m pip install --upgrade pip wheel setuptools
    MAX_JOBS=4 python -m pip -v install flash-attn --no-build-isolation
