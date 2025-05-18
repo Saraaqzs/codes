@@ -186,7 +186,7 @@ if __name__ == "__main__":
     del simsce_model
 
     tokenizer = AutoTokenizer.from_pretrained(opt.llm_path)
-    model = AutoModelForCausalLM.from_pretrained(opt.llm_path, device_map = "auto", torch_dtype = torch.float16)
+    model = AutoModelForCausalLM.from_pretrained(opt.llm_path, device_map = "auto", torch_dtype = torch.float16, attn_implementation = "flash_attention_2")    
     model.eval()
     print(model.dtype)
 
