@@ -1,6 +1,3 @@
-ex_summary.log
-ex_summary.log
-
 pred_sqls_15B_0S_oncomx.txt
 EX score: 0.21212121212121213
 EX score (strict): 0.20202020202020202
@@ -16,10 +13,6 @@ EX score (strict): 0.09090909090909091
 pred_sqls_15B_3S_reduced_10_10_oncomx.txt
 EX score: 0.6262626262626263
 EX score (strict): 0.6161616161616161
-
-pred_sqls_15B_3S_reduced_oncomx.txt
-EX score: 0.5454545454545454
-EX score (strict): 0.5454545454545454
 
 pred_sqls_3B_0S_oncomx.txt
 EX score: 0.35353535353535354
