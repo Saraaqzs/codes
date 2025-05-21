@@ -248,8 +248,8 @@ if __name__ == "__main__":
         
         print(final_generated_sql)
         predicted_sqls.append(final_generated_sql)
-    with open(f"./dem_sqls/demonstration_sqls_{opt.pred_tag}.json", "w", encoding="utf-8") as f:
-        f.write(json.dumps(demonstration_sqls, ensure_ascii=True, indent=2) + "\n")
+    #with open(f"./dem_sqls/demonstration_sqls_{opt.pred_tag}.json", "w", encoding="utf-8") as f:
+    #    f.write(json.dumps(demonstration_sqls, ensure_ascii=True, indent=2) + "\n")
     print("LLM name:", opt.llm_path)
     if "bird" in opt.dataset_path:
         bird_results_dict = dict()
