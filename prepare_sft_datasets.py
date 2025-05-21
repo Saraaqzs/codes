@@ -4,6 +4,7 @@ import re
 import random
 import sqlparse
 
+from collections import defaultdict
 from nltk.tokenize import word_tokenize
 from nltk import ngrams
 from sql_metadata import Parser
@@ -40,23 +41,60 @@ def extract_large_numbers(text):
 
 def remove_table_alias(s):
     try:
-        tables_aliases = Parser(s).tables_aliases
+        tables_aliases = Parser(s.rstrip(")")).tables_aliases
     except Exception as e:
         return s
 
-    new_tables_aliases = {}
-    for i in range(1,11):
-        if "t{}".format(i) in tables_aliases.keys():
-            new_tables_aliases["t{}".format(i)] = tables_aliases["t{}".format(i)]
-    
-    tables_aliases = new_tables_aliases
     for k, v in tables_aliases.items():
         # remove AS clauses
         s = s.replace("AS " + k + " ", "")
         # replace table alias with thier original names
         s = s.replace(k, v)
-    
+
     return s
+
+# Simplified single-pass alias disambiguator and remover
+
+def extract_aliases_with_sqlparse(block):
+    parsed = sqlparse.parse(block.rstrip(")"))[0]
+    tokens = list(parsed.flatten())
+    alias_map = []
+    for i, token in enumerate(tokens):
+        if str(token.ttype)=="Token.Keyword" and token.value.upper() == 'AS' and i + 2 < len(tokens):
+            table_token = tokens[i - 2]
+            alias_token = tokens[i + 2]
+            if str(table_token.ttype)=="Token.Name" and str(alias_token.ttype)=="Token.Name":
+                alias_map.append((alias_token.value, table_token.value))
+    return alias_map
+
+def process_block(block):
+    aliases = extract_aliases_with_sqlparse(block)
+    # Assign unique names
+    alias_counts = defaultdict(int)
+    unique_map = {}
+    for alias, table in aliases:
+        tag = f"{table}_{alias_counts[table]}"
+        alias_counts[table] += 1
+        unique_map[alias] = (table, tag)
+    for alias, (table, temp) in unique_map.items():
+        block = re.sub(rf"\bAS\s+{alias}\b", f"AS {temp}", block, flags=re.IGNORECASE)
+        block = re.sub(rf"\b{alias}\.", f"{temp}.", block)
+        block = re.sub(rf"\b{alias}\b", temp, block)
+    for alias, (table, temp) in unique_map.items():
+        block = re.sub(rf"\bAS\s+{temp}\b", "", block, flags=re.IGNORECASE)
+        block = re.sub(rf"\b{temp}\.", f"{table}.", block)
+        block = re.sub(rf"\b{temp}\b", table, block)
+    return block
+
+def remove_aliases_split_at_in(sql: str) -> str:
+    parts = re.split(r"\bIN\s*\(", sql, flags=re.IGNORECASE)
+    if len(parts) == 1:
+        return process_block(parts[0])
+    else:
+        output = process_block(parts[0])       
+        for part in parts[1:]:          
+            output += " IN (" + process_block(part)
+    return output
 
 def remove_similar_comments(names, comments):
     '''
@@ -218,7 +256,7 @@ def spider_style_dataset(
 
         if mode in ["train", "dev"]:
             sql = data["SQL"] if source in ["bird-dev", "bird-train"] else data["query"]
-            sample["sql"] = remove_table_alias(sqlparse.format(sql, keyword_case = "upper", identifier_case = "lower"))
+            sample["sql"] = remove_aliases_split_at_in(sqlparse.format(sql, keyword_case = "upper", identifier_case = "lower"))
         elif mode == "test":
             sample["sql"] = ""
         
@@ -323,13 +361,13 @@ if __name__ == "__main__":
     #    db_path = "./data/sft_data_collections/sdss/",
     #    db_content_index_path = "./data/sft_data_collections/sdss/db_contents_index",
     #    source = "science-benchhmark",
-    #    table_json_path = "./data/sft_data_collections/sdss/train_tables.json",
+    #    table_json_path = "./data/sft_data_collections/sdss/tables.json",
     #    use_evidence = False,
     #    mode = "train"
     #)
     #with open("./data/sft_sdss_train_text2sql.json", "w") as f:
     #    f.write(json.dumps(sdss_train, indent = 2, ensure_ascii = False))
-#
+
     #print("---------------------------------------------------------------------------")
     #print("preparing dev sets.....")
 #
@@ -339,12 +377,43 @@ if __name__ == "__main__":
     #    db_path="./data/sft_data_collections/sdss/",
     #    db_content_index_path="./data/sft_data_collections/sdss/db_contents_index",
     #    source="science-benchmark",
-    #    table_json_path="./data/sft_data_collections/sdss/dev_tables.json",
+    #    table_json_path="./data/sft_data_collections/sdss/tables.json",
     #    use_evidence=False,
     #    mode="dev"
     #)
     #with open("./data/sft_sdss_dev_text2sql.json", "w") as f:
     #    f.write(json.dumps(sdss_dev, indent=2, ensure_ascii=False))
+    
+    print("cordis-train")
+    ## How many examples?
+    cordis_train = spider_style_dataset(
+        dataset_path = "./data/sft_data_collections/cordis/train.json",
+        db_path = "./data/sft_data_collections/cordis/",
+        db_content_index_path = "./data/sft_data_collections/cordis/db_contents_index",
+        source = "science-benchhmark",
+        table_json_path = "./data/sft_data_collections/cordis/tables.json",
+        use_evidence = False,
+        mode = "train"
+    )
+    with open("./data/sft_cordis_train_text2sql.json", "w") as f:
+        f.write(json.dumps(cordis_train, indent = 2, ensure_ascii = False))
+
+    print("---------------------------------------------------------------------------")
+    print("preparing dev sets.....")
+#
+    print("cordis-dev")
+    cordis_dev = spider_style_dataset(
+        dataset_path="./data/sft_data_collections/cordis/dev.json",
+        db_path="./data/sft_data_collections/cordis/",
+        db_content_index_path="./data/sft_data_collections/cordis/db_contents_index",
+        source="science-benchmark",
+        table_json_path="./data/sft_data_collections/cordis/tables.json",
+        use_evidence=False,
+        mode="dev"
+    )
+    with open("./data/sft_cordis_dev_text2sql.json", "w") as f:
+        f.write(json.dumps(cordis_dev, indent=2, ensure_ascii=False))
+
     ##    
     ##    
     #     

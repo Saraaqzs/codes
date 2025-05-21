@@ -1,0 +1,71 @@
+ex_summary.log
+ex_summary.log
+
+pred_sqls_15B_0S_oncomx.txt
+EX score: 0.21212121212121213
+EX score (strict): 0.20202020202020202
+
+pred_sqls_15B_1S_oncomx.txt
+EX score: 0.06060606060606061
+EX score (strict): 0.06060606060606061
+
+pred_sqls_15B_3S_oncomx.txt
+EX score: 0.10101010101010101
+EX score (strict): 0.09090909090909091
+
+pred_sqls_15B_3S_reduced_10_10_oncomx.txt
+EX score: 0.6262626262626263
+EX score (strict): 0.6161616161616161
+
+pred_sqls_15B_3S_reduced_oncomx.txt
+EX score: 0.5454545454545454
+EX score (strict): 0.5454545454545454
+
+pred_sqls_3B_0S_oncomx.txt
+EX score: 0.35353535353535354
+EX score (strict): 0.3434343434343434
+
+pred_sqls_3B_1S_oncomx.txt
+EX score: 0.45454545454545453
+EX score (strict): 0.45454545454545453
+
+pred_sqls_3B_5S_oncomx.txt
+EX score: 0.45454545454545453
+EX score (strict): 0.45454545454545453
+
+pred_sqls_7B_0S_oncomx.txt
+EX score: 0.31313131313131315
+EX score (strict): 0.29292929292929293
+
+pred_sqls_7B_1S_oncomx.txt
+EX score: 0.5858585858585859
+EX score (strict): 0.5656565656565656
+
+pred_sqls_7B_3S_adapted_oncomx.txt
+EX score: 0.5656565656565656
+EX score (strict): 0.5454545454545454
+
+pred_sqls_7B_5S_oncomx.txt
+EX score: 0.5757575757575758
+EX score (strict): 0.5656565656565656
+
+pred_sqls_gpt4omini_0S_oncomx.txt
+EX score: 0.5656565656565656
+EX score (strict): 0.5656565656565656
+
+pred_sqls_gpt4omini_1S_oncomx.txt
+EX score: 0.5757575757575758
+EX score (strict): 0.5757575757575758
+
+pred_sqls_gpt4omini_3S_oncomx.txt
+EX score: 0.6060606060606061
+EX score (strict): 0.6060606060606061
+
+pred_sqls_gpt4omini_5S_oncomx.txt
+EX score: 0.6161616161616161
+EX score (strict): 0.6161616161616161
+
+pred_sqls_sft_3B_4E_oncomx.txt
+EX score: 0.5858585858585859
+EX score (strict): 0.5858585858585859
+

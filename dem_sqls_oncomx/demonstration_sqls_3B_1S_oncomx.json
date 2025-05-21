@@ -1,0 +1,893 @@
+[
+  {
+    "question": "Show me all disease mutations with ref_aa E",
+    "demonstrations": [
+      {
+        "input": "Show me all species with genus sapiens",
+        "query": "SELECT species.genus FROM species WHERE species.species = 'sapiens' ;"
+      }
+    ]
+  },
+  {
+    "question": "In how many FDA tests was manufacturer 23andMe involved?",
+    "demonstrations": [
+      {
+        "input": "In how many FDA tests was manufacturer Agendia BV involved?",
+        "query": "SELECT count( *) FROM biomarker_fda_test WHERE biomarker_fda_test.test_manufacturer = 'Agendia BV' ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the common name for species 'Mus'?",
+    "demonstrations": [
+      {
+        "input": "What is the common name for species 'Mus'?",
+        "query": "SELECT species.speciescommonname FROM species WHERE species.genus = 'Mus' OR species.genus = 'Mus' ;"
+      }
+    ]
+  },
+  {
+    "question": "What species are there?",
+    "demonstrations": [
+      {
+        "input": "How many species are there?",
+        "query": "SELECT count( *) FROM species ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me all disease mutations",
+    "demonstrations": [
+      {
+        "input": "Show me all species with genus sapiens",
+        "query": "SELECT species.genus FROM species WHERE species.species = 'sapiens' ;"
+      }
+    ]
+  },
+  {
+    "question": "Get a list of all biomarker descriptions",
+    "demonstrations": [
+      {
+        "input": "Get all names from diseases",
+        "query": "SELECT name FROM disease ;"
+      }
+    ]
+  },
+  {
+    "question": "In how many fda test trials was test manufacturer 'ABBOTT MOLECULAR INC' involved?",
+    "demonstrations": [
+      {
+        "input": "In how many FDA tests was manufacturer Agendia BV involved?",
+        "query": "SELECT count( *) FROM biomarker_fda_test WHERE biomarker_fda_test.test_manufacturer = 'Agendia BV' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the gene symbol and the description of cancer biomarkers with panel = 'false'",
+    "demonstrations": [
+      {
+        "input": "Show me the alias for biomarkers with panel test = false",
+        "query": "SELECT biomarker_alias.alias FROM biomarker_alias JOIN biomarker ON biomarker_alias.biomarker_internal_id = biomarker.id WHERE biomarker.test_is_a_panel = 'False' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all information about diseases where the name contains 'cancer'",
+    "demonstrations": [
+      {
+        "input": "Show all information about disease mutations of lung cancer",
+        "query": "SELECT * FROM disease_mutation JOIN disease ON disease_mutation.doid = disease.id WHERE disease.name = \"lung cancer\" ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me all biomarker titles and QA states for biomarker on EDRN in phase Two",
+    "demonstrations": [
+      {
+        "input": "Show me all species with genus sapiens",
+        "query": "SELECT species.genus FROM species WHERE species.species = 'sapiens' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me biomarker titles and qa states for biomarker in phase Two",
+    "demonstrations": [
+      {
+        "input": "Show me biomarker types of biomarkers which have a description different from 'histone cluster 1, H2bi'",
+        "query": "SELECT biomarker_edrn.biomarker_type FROM biomarker_edrn JOIN biomarker ON biomarker_edrn.id = biomarker.id WHERE biomarker.biomarker_description != 'histone cluster 1, H2bi' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me all gene symbols of biomarkers",
+    "demonstrations": [
+      {
+        "input": "Show me all species with genus sapiens",
+        "query": "SELECT species.genus FROM species WHERE species.species = 'sapiens' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me all biomarkers on the EDRN platform which are not of type protein.",
+    "demonstrations": [
+      {
+        "input": "Show me all biomarker types on the EDRN platform that are not about proPSA",
+        "query": "SELECT biomarker_edrn.biomarker_type FROM biomarker_edrn WHERE biomarker_edrn.biomarker_title != 'proPSA' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the title of biomarkers on the EDRN platform with biomarker type different from Protein.",
+    "demonstrations": [
+      {
+        "input": "Show me the alias for biomarkers with ID different from 383",
+        "query": "SELECT biomarker_alias.alias FROM biomarker_alias JOIN biomarker ON biomarker_alias.biomarker_internal_id = biomarker.id WHERE biomarker.biomarker_id != 'urn:edrn:bmdb:biomarker:383' ;"
+      }
+    ]
+  },
+  {
+    "question": "Identify a list of genes expressed in lung cancer",
+    "demonstrations": [
+      {
+        "input": "Identify a list of genes expressed in lung cancer that are statistically significant",
+        "query": "SELECT differential_expression.gene_symbol\nFROM differential_expression\n         JOIN disease ON differential_expression.doid = disease.id\nWHERE disease.name = 'lung cancer'\n  AND statistical_significance = 'Yes' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show biomarker gene symbol and description for 'breast cancer'",
+    "demonstrations": [
+      {
+        "input": "Show the gene symbol and the description of biomarkers",
+        "query": "SELECT gene_symbol, biomarker_description FROM biomarker ;"
+      }
+    ]
+  },
+  {
+    "question": "What are the different biomarker EDRN phases?",
+    "demonstrations": [
+      {
+        "input": "What are the different tools for disease mutation impact predictions?",
+        "query": "SELECT DISTINCT tool FROM disease_mutation_impact_prediction ;"
+      }
+    ]
+  },
+  {
+    "question": "List the platform method an the test study design for FDA tests from test manufacturer Dako Denmark A/S",
+    "demonstrations": [
+      {
+        "input": "List the FDA test submissions for biomarker PRC1",
+        "query": "SELECT biomarker_fda.test_submission FROM biomarker_fda JOIN biomarker_fda_ncit_term ON biomarker_fda.id = biomarker_fda_ncit_term.biomarker_fda_id WHERE biomarker_fda_ncit_term.ncit_biomarker = 'PRC1' ;"
+      }
+    ]
+  },
+  {
+    "question": "Get the p-value of differential expressions for the disease 'lung cancer'",
+    "demonstrations": [
+      {
+        "input": "Show the gene symbol of differential expression for the disease 'lung cancer'",
+        "query": "SELECT differential_expression.gene_symbol\nFROM differential_expression\n         JOIN disease ON differential_expression.doid = disease.id\nWHERE disease.name = 'lung cancer' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show disease mutation chromosome positions for skin cancer",
+    "demonstrations": [
+      {
+        "input": "Show disease mutation frequency for disease mutation with chromosome position 46388126",
+        "query": "SELECT disease_mutation.mutation_freq FROM disease_mutation WHERE disease_mutation.chromosome_pos = 46388126 ;"
+      }
+    ]
+  },
+  {
+    "question": "List all disease mutation chromosome positions data for disease skin cancer",
+    "demonstrations": [
+      {
+        "input": "Show disease mutation chromosome positions and the count of mutations having these positions",
+        "query": "SELECT disease_mutation.chromosome_pos, count( *) FROM disease_mutation  GROUP BY disease_mutation.chromosome_pos ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me all information about disease mutations with amino acid residue (ref_aa) equal to E",
+    "demonstrations": [
+      {
+        "input": "Show me all amino acid residue variations of disease mutations where the reference nucleotide base is not G",
+        "query": "SELECT disease_mutation.alt_aa FROM disease_mutation WHERE disease_mutation.ref_nt != 'G' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many FDA tests did manufacturer 23andMe?",
+    "demonstrations": [
+      {
+        "input": "How many FDA tests did manufacturer Agendia BV?",
+        "query": "SELECT count( *) FROM biomarker_fda_test WHERE biomarker_fda_test.test_manufacturer = 'Agendia BV' ;"
+      }
+    ]
+  },
+  {
+    "question": "What are the name of cancer types where the A1BG gene expression is significantly increased (up regulated)",
+    "demonstrations": [
+      {
+        "input": "What are the name of cancer diseases that gene A1CF is differentially expressed in with a p-value less than 0.01",
+        "query": "SELECT DISTINCT disease.name\nFROM differential_expression\n         JOIN disease ON differential_expression.doid = disease.id\nWHERE gene_symbol = 'A1CF'\n  AND pvalue < 0.01 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me all information about species",
+    "demonstrations": [
+      {
+        "input": "Show me all species with genus sapiens",
+        "query": "SELECT species.genus FROM species WHERE species.species = 'sapiens' ;"
+      }
+    ]
+  },
+  {
+    "question": "Return the symbol and p-value for the expression of EGFR in lung cancer ",
+    "demonstrations": [
+      {
+        "input": "Show the gene symbol of differential expression for lung cancer",
+        "query": "SELECT differential_expression.gene_symbol\nFROM differential_expression\n         JOIN disease ON differential_expression.doid = disease.id\nWHERE disease.name = 'lung cancer' ;"
+      }
+    ]
+  },
+  {
+    "question": "Return gen symbol and pvalue for the expression of gene with symbol 'EGFR' in lung cancer ",
+    "demonstrations": [
+      {
+        "input": "Show name and number of diseases",
+        "query": "SELECT disease.name, count( *) FROM disease  GROUP BY disease.name ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all information about disease mutations",
+    "demonstrations": [
+      {
+        "input": "List all disease names",
+        "query": "SELECT name FROM disease ;"
+      }
+    ]
+  },
+  {
+    "question": "How many healthy expression are there for 'late adult stage'?",
+    "demonstrations": [
+      {
+        "input": "How many healthy expressions have expression rank score 26.30?",
+        "query": "SELECT count( *) FROM healthy_expression WHERE healthy_expression.expression_rank_score = 26.30 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show name of diseases where the A1BG gene expression is statistically significant",
+    "demonstrations": [
+      {
+        "input": "Identify a list of genes expressed in lung cancer that are statistically significant",
+        "query": "SELECT differential_expression.gene_symbol\nFROM differential_expression\n         JOIN disease ON differential_expression.doid = disease.id\nWHERE disease.name = 'lung cancer'\n  AND statistical_significance = 'Yes' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show name of diseases where the gene expression with symbol A1BG has a statistical significance of 'Yes'",
+    "demonstrations": [
+      {
+        "input": "Get the symbol of genes expressed in the disease 'lung cancer' that have statistical significance set to 'Yes'",
+        "query": "SELECT differential_expression.gene_symbol\nFROM differential_expression\n         JOIN disease ON differential_expression.doid = disease.id\nWHERE disease.name = 'lung cancer'\n  AND statistical_significance = 'Yes' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the description of all biomarkers",
+    "demonstrations": [
+      {
+        "input": "Show me all biomarker FDA NCIt terms without the test trade name 'MammaPrint'",
+        "query": "SELECT biomarker_fda_ncit_term.ncit_biomarker FROM biomarker_fda_ncit_term JOIN biomarker_fda ON biomarker_fda_ncit_term.biomarker_fda_id = biomarker_fda.id WHERE biomarker_fda.test_trade_name != 'MammaPrint' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the gene symbol and the description of cancer biomarkers which are not in a panel",
+    "demonstrations": [
+      {
+        "input": "Show me the description of biomarkers which are not in a panel",
+        "query": "SELECT biomarker.biomarker_description FROM biomarker WHERE biomarker.test_is_a_panel = 'False' ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the test trade name for FDA tests which are actually used for predisposition?",
+    "demonstrations": [
+      {
+        "input": "What is the trade name of FDA tests that are actually used for prognosis?",
+        "query": "SELECT biomarker_fda_test_use.test_trade_name FROM biomarker_fda_test_use WHERE biomarker_fda_test_use.actual_use = 'prognostic' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the gene symbol of biomarkers",
+    "demonstrations": [
+      {
+        "input": "Show me the description for biomarkers with symbol MMP1",
+        "query": "SELECT biomarker_description FROM biomarker WHERE gene_symbol = 'MMP1' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me all biomarkers on the EDRN platform with type protein in phase two.",
+    "demonstrations": [
+      {
+        "input": "Show me all tests which are a panel",
+        "query": "SELECT biomarker.test_is_a_panel FROM biomarker WHERE biomarker.gene_symbol != 'LZTS1' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the title of all biomarkers on the EDRN platform with biomarker type Protein in phase Two.",
+    "demonstrations": [
+      {
+        "input": "Show me all biomarker FDA NCIt terms without the test trade name 'MammaPrint'",
+        "query": "SELECT biomarker_fda_ncit_term.ncit_biomarker FROM biomarker_fda_ncit_term JOIN biomarker_fda ON biomarker_fda_ncit_term.biomarker_fda_id = biomarker_fda.id WHERE biomarker_fda.test_trade_name != 'MammaPrint' ;"
+      }
+    ]
+  },
+  {
+    "question": "Get the biomarker gene symbol and biomarker description for disease with name 'breast cancer'",
+    "demonstrations": [
+      {
+        "input": "Show the gene symbol and the description of biomarkers",
+        "query": "SELECT gene_symbol, biomarker_description FROM biomarker ;"
+      }
+    ]
+  },
+  {
+    "question": "Get all distinct biomarker EDRN phases",
+    "demonstrations": [
+      {
+        "input": "Show me all biomarker types on the EDRN platform with a phase different from 'One'",
+        "query": "SELECT biomarker_edrn.biomarker_type FROM biomarker_edrn WHERE biomarker_edrn.phase != 'One' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the pvalue of differential expression of lung cancer",
+    "demonstrations": [
+      {
+        "input": "Show the gene symbol of differential expression for lung cancer",
+        "query": "SELECT differential_expression.gene_symbol\nFROM differential_expression\n         JOIN disease ON differential_expression.doid = disease.id\nWHERE disease.name = 'lung cancer' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many genes are there for species Homo?",
+    "demonstrations": [
+      {
+        "input": "How many disease mutations are there with icgc as data source?",
+        "query": "SELECT count( *) FROM disease_mutation WHERE disease_mutation.data_source = 'icgc' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many genes ensembles are there for species with genus Homo?",
+    "demonstrations": [
+      {
+        "input": "How many disease mutations are there with icgc as data source?",
+        "query": "SELECT count( *) FROM disease_mutation WHERE disease_mutation.data_source = 'icgc' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show tests built by a manufacturer starting with 'Roche' ",
+    "demonstrations": [
+      {
+        "input": "Show submissions of biomarker FDA tests from test manufacturer 'Roche Molecular Systems Inc.'",
+        "query": "SELECT *\nFROM biomarker_fda_test\nWHERE test_manufacturer = 'Roche Molecular Systems Inc.' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show submissions of biomarker FDA tests from test manufacturer starting with 'Roche' ",
+    "demonstrations": [
+      {
+        "input": "Show submissions of biomarker FDA tests from test manufacturer 'Roche Molecular Systems Inc.'",
+        "query": "SELECT *\nFROM biomarker_fda_test\nWHERE test_manufacturer = 'Roche Molecular Systems Inc.' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which diseases (name) have a mutation with a coding sequence position of 102997?",
+    "demonstrations": [
+      {
+        "input": "Show me which disease mutation site annotations have different feature keys than coding sequence position 1809",
+        "query": "SELECT disease_mutation_site_annotation.feature_key FROM disease_mutation_site_annotation JOIN disease_mutation ON disease_mutation_site_annotation.disease_mutation_id = disease_mutation.id WHERE disease_mutation.cds_pos != 1809 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me all diseases having a mutation with a coding sequence position (cds_pos) of 102997?",
+    "demonstrations": [
+      {
+        "input": "Show the description of disease mutation site annotations with a coding sequence position of 404",
+        "query": "SELECT disease_mutation_site_annotation.description FROM disease_mutation_site_annotation JOIN disease_mutation ON disease_mutation_site_annotation.disease_mutation_id = disease_mutation.id WHERE disease_mutation.cds_pos = 404 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me all gene symbols expressed with a pvalue between 0.39 and 0.41",
+    "demonstrations": [
+      {
+        "input": "Show me all tools for disease mutation impact predictions with a probability of 0.0 and a site prediction of 'benign'",
+        "query": "SELECT disease_mutation_impact_prediction.tool FROM disease_mutation_impact_prediction WHERE disease_mutation_impact_prediction.probability = 0.0 AND disease_mutation_impact_prediction.site_prediction = 'benign' ;"
+      }
+    ]
+  },
+  {
+    "question": "Get all gene symbols from expressions with a p-value between 0.39 and 0.41",
+    "demonstrations": [
+      {
+        "input": "List the gene symbols expressed with a p-value of 0.00288",
+        "query": "SELECT gene_symbol FROM differential_expression WHERE pvalue = 0.00288 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the distinct chromosome id's in mutations of breast cancer",
+    "demonstrations": [
+      {
+        "input": "Show the number of distinct biomarkers for each disease",
+        "query": "SELECT disease.name, count(DISTINCT biomarker.id)\nFROM disease \n    JOIN biomarker_fda_test  ON disease.id = biomarker_fda_test.doid\n    JOIN biomarker_fda  ON biomarker_fda_test.test_submission = biomarker_fda.test_submission AND biomarker_fda_test.test_trade_name = biomarker_fda.test_trade_name\n    JOIN biomarker  ON biomarker_fda.id = biomarker.id\nGROUP BY disease.name ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the different chromosome id's in mutations of disease 'breast cancer'",
+    "demonstrations": [
+      {
+        "input": "Show me the coding sequence position of disease mutations with chromosome id different from 16",
+        "query": "SELECT disease_mutation.cds_pos FROM disease_mutation WHERE disease_mutation.chromosome_id != '16' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the names of all anatomical entities which have a healthy expression with relative gene expression level LOW and a relative anatomical expression level of HIGH",
+    "demonstrations": [
+      {
+        "input": "Show me the name of all anatomical entities which have a healthy expression score different from 2.63",
+        "query": "SELECT anatomical_entity.name FROM anatomical_entity JOIN healthy_expression ON anatomical_entity.id = healthy_expression.uberon_anatomical_id WHERE healthy_expression.expression_score != 2.63000 ;"
+      }
+    ]
+  },
+  {
+    "question": "List the names of anatomical entities having an expression with relative gene expression level LOW and a relative anatomical expression level of HIGH",
+    "demonstrations": [
+      {
+        "input": "List the expression level anatomical relative expressions with a score of 2.63 and a rank score of 28.20",
+        "query": "SELECT healthy_expression.expression_level_anatomical_relative FROM healthy_expression WHERE healthy_expression.expression_score = 2.63000 AND healthy_expression.expression_rank_score = 28.20 ;"
+      }
+    ]
+  },
+  {
+    "question": "Get the name of all anatomical entities starting with 'bone'",
+    "demonstrations": [
+      {
+        "input": "Get all anatomical entities where the name starts 'bone'",
+        "query": "SELECT name FROM anatomical_entity WHERE name LIKE 'bone%' ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the common name for species with genus Mus?",
+    "demonstrations": [
+      {
+        "input": "What is the common name for species with genus Mus?",
+        "query": "SELECT species.speciescommonname FROM species WHERE species.genus = 'Mus' OR species.genus = 'Mus' ;"
+      }
+    ]
+  },
+  {
+    "question": "What are the name of diseases where the expression of gene with symbol A1BG is up regulated (expression change direction)",
+    "demonstrations": [
+      {
+        "input": "What are the name of cancer diseases that gene A1CF is differentially expressed in with a p-value less than 0.01",
+        "query": "SELECT DISTINCT disease.name\nFROM differential_expression\n         JOIN disease ON differential_expression.doid = disease.id\nWHERE gene_symbol = 'A1CF'\n  AND pvalue < 0.01 ;"
+      }
+    ]
+  },
+  {
+    "question": "How many healthy expression are there for stage name starting with 'late adult'?",
+    "demonstrations": [
+      {
+        "input": "How many healthy expressions have expression rank score 26.30?",
+        "query": "SELECT count( *) FROM healthy_expression WHERE healthy_expression.expression_rank_score = 26.30 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show number of fda test trials with test manufacturer 'ABBOTT MOLECULAR INC'",
+    "demonstrations": [
+      {
+        "input": "Show number of test trials of test manufacturer '23andMe'",
+        "query": "SELECT count(*)\nFROM biomarker_fda_test_trial\n         JOIN biomarker_fda_test ON biomarker_fda_test_trial.test_submission = biomarker_fda_test.test_submission AND biomarker_fda_test_trial.test_trade_name = biomarker_fda_test.test_trade_name\nWHERE biomarker_fda_test.test_manufacturer = '23andMe' ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the test trade name for FDA tests where actual use is 'predisposition'?",
+    "demonstrations": [
+      {
+        "input": "What is the trade name of FDA tests which are actually used for prognostic?",
+        "query": "SELECT biomarker_fda_test_use.test_trade_name FROM biomarker_fda_test_use WHERE biomarker_fda_test_use.actual_use = 'prognostic' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all symbols of genes expressed in the disease 'lung cancer'",
+    "demonstrations": [
+      {
+        "input": "Show all the information about biomarkers and the gene mutations associated with each cancer",
+        "query": "SELECT biomarker.biomarker_description, disease.name\nFROM biomarker \n    JOIN biomarker_fda  ON biomarker.id = biomarker_fda.id\n    JOIN biomarker_fda_test  ON biomarker_fda.test_submission = biomarker_fda_test.test_submission AND biomarker_fda.test_trade_name = biomarker_fda_test.test_trade_name\n    JOIN disease  ON biomarker_fda_test.doid = disease.id\n    JOIN disease_mutation  ON disease.id = disease_mutation.doid ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the platform method an the study design for FDA tests from manufacturer 'Dako Denmark A/S'",
+    "demonstrations": [
+      {
+        "input": "Show me the alias and the number of biomarker alias'",
+        "query": "SELECT biomarker_alias.alias, count( *) FROM biomarker_alias  GROUP BY biomarker_alias.alias ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the description for FDA approved biomarkers with test approval status 'class II'",
+    "demonstrations": [
+      {
+        "input": "Show biomarker origin for FDA test with approval status 'Class II 510(k)', evidence 'clinical use'",
+        "query": "SELECT biomarker_fda_test.biomarker_origin FROM biomarker_fda_test WHERE biomarker_fda_test.test_approval_status = 'Class II 510(k)' AND biomarker_fda_test.test_adoption_evidence = 'clinical use' ;"
+      }
+    ]
+  },
+  {
+    "question": "List the descriptions of biomarkers for fda tests with approval status 'class II'",
+    "demonstrations": [
+      {
+        "input": "List the genus for species 'sapiens'",
+        "query": "SELECT species.genus FROM species WHERE species.species = 'sapiens' ;"
+      }
+    ]
+  },
+  {
+    "question": "Return all information from healthy expressions which have an expression score above the average.",
+    "demonstrations": [
+      {
+        "input": "Show all information about healthy expressions",
+        "query": "SELECT * FROM healthy_expression ;"
+      }
+    ]
+  },
+  {
+    "question": "Return all expressions which have an expression score higher than the average expression score.",
+    "demonstrations": [
+      {
+        "input": "Get the expression rank score for the expression with highest score",
+        "query": "SELECT healthy_expression.expression_rank_score FROM healthy_expression    ORDER BY healthy_expression.expression_score DESC LIMIT 1 ;"
+      }
+    ]
+  },
+  {
+    "question": "What are the symbols for biomarkers with type genomic for anatomical entity breast?",
+    "demonstrations": [
+      {
+        "input": "what are the names of anatomical entities and species?",
+        "query": "SELECT anatomical_entity.name,\nspecies.speciescommonname FROM anatomical_entity  JOIN\nhealthy_expression  ON anatomical_entity.id = healthy_expression.uberon_anatomical_id JOIN\nxref_gene_ensembl  ON healthy_expression.ensembl_gene_id = xref_gene_ensembl.ensembl_gene_id\nJOIN species  ON xref_gene_ensembl.speciesid = species.speciesid ;"
+      }
+    ]
+  },
+  {
+    "question": "What are the symbols for biomarkers on the EDRN platform with biomarker type Genomic for anatomical entity 'breast'?",
+    "demonstrations": [
+      {
+        "input": "What are the biomarker symbols for EDRN biomarker type protein?",
+        "query": "SELECT gene_symbol FROM biomarker JOIN biomarker_edrn ON biomarker.id = biomarker_edrn.id WHERE biomarker_type = 'Protein' ;"
+      }
+    ]
+  },
+  {
+    "question": "What disease can occur in the liver?",
+    "demonstrations": [
+      {
+        "input": "What is the trade name of FDA tests with submission K101454 or P140020?",
+        "query": "SELECT biomarker_fda.test_trade_name FROM biomarker_fda WHERE biomarker_fda.test_submission = 'K101454' OR biomarker_fda.test_submission = 'P140020' ;"
+      }
+    ]
+  },
+  {
+    "question": "List the name of diseases that can occur in the anatomical entity 'liver'",
+    "demonstrations": [
+      {
+        "input": "List the descriptions for anatomical entities on the EDRN platform with phase One",
+        "query": "SELECT anatomical_entity.description FROM anatomical_entity JOIN biomarker_edrn ON anatomical_entity.id = biomarker_edrn.uberon_anatomical_id WHERE biomarker_edrn.phase = 'One' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show distinct manufacturer of tests for gene BRAF ",
+    "demonstrations": [
+      {
+        "input": "Show biomarker origin for FDA test trials with different id than 'NCT00433589'",
+        "query": "SELECT biomarker_fda_test.biomarker_origin FROM biomarker_fda_test JOIN biomarker_fda_test_trial ON biomarker_fda_test.test_trade_name = biomarker_fda_test_trial.test_trade_name WHERE biomarker_fda_test_trial.test_trial_id != 'NCT00433589' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all FDA test manufacturer for biomarkers of gene BRAF ",
+    "demonstrations": [
+      {
+        "input": "List all disease names",
+        "query": "SELECT name FROM disease ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the name of anatomical entities and species for all species",
+    "demonstrations": [
+      {
+        "input": "Show me the name and description of all anatomical entities.",
+        "query": "SELECT name, description\nFROM anatomical_entity ;"
+      }
+    ]
+  },
+  {
+    "question": "What are the distinct healthy organs where the gene A1BG is expressed.",
+    "demonstrations": [
+      {
+        "input": "What are the names of stages which have a healthy expression expression rank score which is not equal to 13.00?",
+        "query": "SELECT stage.name FROM stage JOIN healthy_expression ON stage.id = healthy_expression.uberon_developmental_id WHERE healthy_expression.expression_rank_score != 13.00 ;"
+      }
+    ]
+  },
+  {
+    "question": "Give me symbol and description of biomarkers related to breast at the EDRN phase one",
+    "demonstrations": [
+      {
+        "input": "Show me the anatomical id of biomarkers on the EDRN platform with phase One or One",
+        "query": "SELECT biomarker_edrn.uberon_anatomical_id FROM biomarker_edrn WHERE biomarker_edrn.phase = 'One' OR biomarker_edrn.phase = 'One' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the name of the anatomical entity and the expression score of where either gene ENSMUSG00000000037 or gene ENSMUSG00000000078 is expressed in.",
+    "demonstrations": [
+      {
+        "input": "Show me the anatomical id of biomarkers on the EDRN platform with phase One or One",
+        "query": "SELECT biomarker_edrn.uberon_anatomical_id FROM biomarker_edrn WHERE biomarker_edrn.phase = 'One' OR biomarker_edrn.phase = 'One' ;"
+      }
+    ]
+  },
+  {
+    "question": "What's the NCIt term for biomarker with symbol ALDH4A1?",
+    "demonstrations": [
+      {
+        "input": "What's the alias for biomarker with symbol TUBB6?",
+        "query": "SELECT biomarker_alias.alias FROM biomarker_alias JOIN biomarker ON biomarker_alias.biomarker_internal_id = biomarker.id WHERE biomarker.gene_symbol = 'TUBB6' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all information about disease mutations of the anatomical entity liver",
+    "demonstrations": [
+      {
+        "input": "Show all information about disease mutations of lung cancer",
+        "query": "SELECT * FROM disease_mutation JOIN disease ON disease_mutation.doid = disease.id WHERE disease.name = \"lung cancer\" ;"
+      }
+    ]
+  },
+  {
+    "question": "List all disease mutations which belong to anatomical entity liver.",
+    "demonstrations": [
+      {
+        "input": "Get name and description of anatomical entities.",
+        "query": "SELECT name, description\nFROM anatomical_entity ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the gene symbol of biomarkers that have an approval status of 'PMP' from the FDA",
+    "demonstrations": [
+      {
+        "input": "Show me the pmid of biomarker articles that have a panel test",
+        "query": "SELECT biomarker_article.pmid FROM biomarker_article JOIN biomarker ON biomarker_article.biomarker_internal_id = biomarker.id WHERE biomarker.test_is_a_panel != 'False' ;"
+      }
+    ]
+  },
+  {
+    "question": "What are the desctiptions of biomarkers related to breast cancer?",
+    "demonstrations": [
+      {
+        "input": "What are the approved biomarkers for lung cancer",
+        "query": "SELECT biomarker_fda_drug.biomarker_drug FROM disease  JOIN biomarker_fda_test  ON  disease.id = biomarker_fda_test.doid JOIN biomarker_fda  ON biomarker_fda_test.test_trade_name = biomarker_fda.test_trade_name JOIN biomarker_fda_drug  ON biomarker_fda_test.test_submission = biomarker_fda.test_submission WHERE disease.name = 'lung cancer' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many biomarkers are associated with each anatomical entity?",
+    "demonstrations": [
+      {
+        "input": "How many anatomical entities have identifier UBERON:0002197?",
+        "query": "SELECT count( *) FROM anatomical_entity WHERE anatomical_entity.id = 'UBERON:0002197' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me all information about disease mutations with ref_aa equal to F",
+    "demonstrations": [
+      {
+        "input": "Show all information about mutations of lung cancer",
+        "query": "SELECT *\nFROM disease_mutation\n         JOIN disease ON disease_mutation.doid = disease.id\nWHERE disease.name = \"lung cancer\" ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all information about diseases which contain cancer in the name",
+    "demonstrations": [
+      {
+        "input": "Show all the information about biomarkers and the gene mutations associated with each cancer",
+        "query": "SELECT biomarker.biomarker_description, disease.name\nFROM biomarker \n    JOIN biomarker_fda  ON biomarker.id = biomarker_fda.id\n    JOIN biomarker_fda_test  ON biomarker_fda.test_submission = biomarker_fda_test.test_submission AND biomarker_fda.test_trade_name = biomarker_fda_test.test_trade_name\n    JOIN disease  ON biomarker_fda_test.doid = disease.id\n    JOIN disease_mutation  ON disease.id = disease_mutation.doid ;"
+      }
+    ]
+  },
+  {
+    "question": "Show distinct manufacturer of diagnostic tests for gene BRAF ",
+    "demonstrations": [
+      {
+        "input": "Show FDA test platform methods for tests with the indication 'companion diagnosis'",
+        "query": "SELECT biomarker_fda_test.platform_method FROM biomarker_fda_test JOIN biomarker_fda_test_use ON biomarker_fda_test.test_trade_name = biomarker_fda_test_use.test_trade_name WHERE biomarker_fda_test_use.approved_indication = 'companion diagnosis' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show cancer biomarker panels ",
+    "demonstrations": [
+      {
+        "input": "Show biomarker drugs",
+        "query": "SELECT biomarker_drug FROM biomarker_fda_drug ;"
+      }
+    ]
+  },
+  {
+    "question": "Show name of biomarkers with tests from 23andMe",
+    "demonstrations": [
+      {
+        "input": "Show biomarker drugs",
+        "query": "SELECT biomarker_drug FROM biomarker_fda_drug ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the name of all manufacturer producing tests for breast cancer biomarkers",
+    "demonstrations": [
+      {
+        "input": "Show the reference amino acid residue and number of disease mutations for it",
+        "query": "SELECT disease_mutation.ref_aa, count( *) FROM disease_mutation  GROUP BY disease_mutation.ref_aa ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all approved tests for breast cancer biomarkers",
+    "demonstrations": [
+      {
+        "input": "Show approved indication for FDA tests with biomarker origin 'amplification'",
+        "query": "SELECT biomarker_fda_test_use.approved_indication FROM biomarker_fda_test_use JOIN biomarker_fda_test ON biomarker_fda_test_use.test_trade_name = biomarker_fda_test.test_trade_name WHERE biomarker_fda_test.biomarker_origin = 'amplification' ;"
+      }
+    ]
+  },
+  {
+    "question": "Return the anatomical entity associated with the most biomarkers",
+    "demonstrations": [
+      {
+        "input": "Show the number of biomarkers for each anatomical entity",
+        "query": "SELECT anatomical_entity.name, count(DISTINCT  biomarker.id)\nFROM anatomical_entity \n    JOIN biomarker_edrn  ON anatomical_entity.id = biomarker_edrn.uberon_anatomical_id\n    JOIN biomarker  ON biomarker_edrn.id = biomarker.id\nGROUP BY anatomical_entity.name ;"
+      }
+    ]
+  },
+  {
+    "question": "what are the top chromosomes with more reported mutations from cosmic data source",
+    "demonstrations": [
+      {
+        "input": "what are the top 5 chromosomes with more reported mutations",
+        "query": "SELECT  chromosome_id, count(*) FROM disease_mutation GROUP BY chromosome_id ORDER BY count(*) DESC LIMIT 5 ;"
+      }
+    ]
+  },
+  {
+    "question": "top 3 cancer types with more differential expression entries ",
+    "demonstrations": [
+      {
+        "input": "cancer types ordered by the number of differential expression entries",
+        "query": "SELECT disease.name, count(*)  FROM differential_expression JOIN disease  ON disease.id = doid\nGROUP BY disease.name ORDER BY count(*) DESC ;"
+      }
+    ]
+  },
+  {
+    "question": "Find all of the edrn biomarkers that have never been approved by the FDA ",
+    "demonstrations": [
+      {
+        "input": "Show me all FDA test platforms for test studies with test design 'Non-Pro'",
+        "query": "SELECT biomarker_fda_test.platform_method FROM biomarker_fda_test WHERE biomarker_fda_test.test_study_design != 'Pro' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all of the edrn biomarkers that have been approved by the FDA ",
+    "demonstrations": [
+      {
+        "input": "Show me all approved indications for FDA tests",
+        "query": "SELECT biomarker_fda_test_use.approved_indication, count( *) FROM biomarker_fda_test_use  GROUP BY biomarker_fda_test_use.approved_indication ;"
+      }
+    ]
+  },
+  {
+    "question": "which cosmic data source reported the most mutations for each chromosome?",
+    "demonstrations": [
+      {
+        "input": "How many disease mutations have data source 'icgc'?",
+        "query": "SELECT count( *) FROM disease_mutation WHERE disease_mutation.data_source = 'icgc' ;"
+      }
+    ]
+  },
+  {
+    "question": "show me all the genes that relate to biomarkers of prostate cancer.",
+    "demonstrations": [
+      {
+        "input": "Show me all test which have a panel with the biomarker SOD1 as part of the panel",
+        "query": "SELECT biomarker.test_is_a_panel FROM biomarker WHERE biomarker.biomarker_id = 'urn:edrn:bmdb:biomarker:523' AND biomarker.biomarker_description = 'SOD1, superoxide dismutase, is one of two isozymes that destroy free superoxide radicals that are normally produced within the cells and which are toxic to biological systems.  The SOD1 isozyme is a soluble homodimer found in the cytoplasm.  It converts naturally-occuring but harmful superoxide radicals to molecular oxygen and hydrogen peroxide. The other isozyme is a mitochondrial protein. Defects in SOD1 are the cause of amyotrophic lateral sclerosis type 1, a familial form of amyotrophic lateral sclerosis.' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many fda test have been executed for each biomarker for each test use?",
+    "demonstrations": [
+      {
+        "input": "How many FDA test uses have actual use 'prognostic'?",
+        "query": "SELECT count( *) FROM biomarker_fda_test_use WHERE biomarker_fda_test_use.actual_use = 'prognostic' ;"
+      }
+    ]
+  },
+  {
+    "question": "What are the test names that have been approved by the FDA for diagnosis",
+    "demonstrations": [
+      {
+        "input": "What are the biomarkers for which \"Vemurafenib\" was approved by FDA.",
+        "query": "SELECT biomarker.id, biomarker_fda_drug.biomarker_drug\nFROM biomarker JOIN biomarker_fda\nON biomarker.id = biomarker_fda.id\nJOIN biomarker_fda_drug\nON biomarker_fda.id = biomarker_fda_drug.biomarker_fda_id\nWHERE biomarker_fda_drug.biomarker_drug = 'Vemurafenib' ;"
+      }
+    ]
+  },
+  {
+    "question": "Who manufactures lung cancer prognosis tests that are approved by the FDA?",
+    "demonstrations": [
+      {
+        "input": "What are the approved biomarkers for lung cancer",
+        "query": "SELECT biomarker_fda_drug.biomarker_drug FROM disease  JOIN biomarker_fda_test  ON  disease.id = biomarker_fda_test.doid JOIN biomarker_fda  ON biomarker_fda_test.test_trade_name = biomarker_fda.test_trade_name JOIN biomarker_fda_drug  ON biomarker_fda_test.test_submission = biomarker_fda.test_submission WHERE disease.name = 'lung cancer' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which diseases can be diagnosed with a blood test?",
+    "demonstrations": [
+      {
+        "input": "Which tool can be used for disease mutation impact predictions with site prediction benign?",
+        "query": "SELECT disease_mutation_impact_prediction.tool FROM disease_mutation_impact_prediction WHERE disease_mutation_impact_prediction.site_prediction = 'benign' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all the information about biomarkers and the species for which they are healthy expressed",
+    "demonstrations": [
+      {
+        "input": "Show all the information about biomarkers and the gene mutations associated with each cancer",
+        "query": "SELECT biomarker.biomarker_description, disease.name\nFROM biomarker \n    JOIN biomarker_fda  ON biomarker.id = biomarker_fda.id\n    JOIN biomarker_fda_test  ON biomarker_fda.test_submission = biomarker_fda_test.test_submission AND biomarker_fda.test_trade_name = biomarker_fda_test.test_trade_name\n    JOIN disease  ON biomarker_fda_test.doid = disease.id\n    JOIN disease_mutation  ON disease.id = disease_mutation.doid ;"
+      }
+    ]
+  }
+]

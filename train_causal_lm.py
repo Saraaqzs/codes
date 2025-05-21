@@ -127,8 +127,8 @@ def train(opt):
     accelerator.print("using LLM from:", opt.pretrained_model_name_or_path)
 
     tokenizer = AutoTokenizer.from_pretrained(opt.pretrained_model_name_or_path)
-    # Sara: Simply drop "attn_implementation" when it's not been installed/used
     model = AutoModelForCausalLM.from_pretrained(opt.pretrained_model_name_or_path, attn_implementation = "flash_attention_2")
+    #model = AutoModelForCausalLM.from_pretrained(opt.pretrained_model_name_or_path)
     tokenizer.pad_token_id = tokenizer.eos_token_id
     model.config.pad_token_id = tokenizer.eos_token_id
     

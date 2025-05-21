@@ -1,15 +1,37 @@
+#!/bin/bash
 set -e
+# --------------- cordis dev --------------- #
+#CUDA_VISIBLE_DEVICES=0 python -u text2sql_zero_shot.py \
+#--llm_path ./ckpts/codes-3b-4ep-cordis/ckpt-1408 \
+#--sic_path ./sic_ckpts/sic_cordis \
+#--table_num 19 \
+#--column_num 82 \
+#--dataset_path ./data/sft_cordis_dev_text2sql.json \
+#--max_tokens 4096 \
+#--max_new_tokens 256
+#--pred_tag 3b_4ep
+#
+#--------------- oncomx dev --------------- #
+#CUDA_VISIBLE_DEVICES=0 python -u text2sql_zero_shot.py \
+#--llm_path seeklhy/codes-1b \
+#--sic_path ./sic_ckpts/sic_oncomx \
+#--table_num 25 \
+#--column_num 106 \
+#--dataset_path ./data/sft_oncomx_dev_text2sql.json \
+#--max_tokens 4096 \
+#--max_new_tokens 256
+#--pred_tag 3B_4ep
 
-# --------------- oncomx dev --------------- #
+# --------------- sdss dev --------------- #
 CUDA_VISIBLE_DEVICES=0 python -u text2sql_zero_shot.py \
---llm_path seeklhy/codes-1b \
---sic_path ./sic_ckpts/sic_oncomx \
---table_num 25 \
---column_num 106 \
---dataset_path ./data/sft_oncomx_dev_text2sql.json \
+--llm_path ./ckpts/codes-3b-4ep-sdss/ckpt-2160 \
+--sic_path ./sic_ckpts/sic_sdss \
+--table_num 6 \
+--column_num 61 \
+--dataset_path ./data/sft_sdss_dev_text2sql.json \
 --max_tokens 4096 \
---max_new_tokens 256
-
+--max_new_tokens 256 \
+--pred_tag 3B_4ep
 
 # --------------- Spider dev --------------- #
 # SFT CodeS-1B on Spider's training set
@@ -26,7 +48,7 @@ CUDA_VISIBLE_DEVICES=0 python -u text2sql_zero_shot.py \
 
 # --------------- BIRD dev --------------- #
 # SFT CodeS-1B on BIRD's training set
-CUDA_VISIBLE_DEVICES=0 python -u text2sql_zero_shot.py --llm_path seeklhy/codes-1b-bird --sic_path ./sic_ckpts/sic_bird --table_num 6 --column_num 10 --dataset_path ./data/sft_bird_dev_text2sql.json --max_tokens 4096 --max_new_tokens 256
+#CUDA_VISIBLE_DEVICES=0 python -u text2sql_zero_shot.py --llm_path seeklhy/codes-1b-bird --sic_path ./sic_ckpts/sic_bird --table_num 6 --column_num 10 --dataset_path ./data/sft_bird_dev_text2sql.json --max_tokens 4096 --max_new_tokens 256
 
 # SFT CodeS-3B on BIRD's training set
 # CUDA_VISIBLE_DEVICES=0 python -u text2sql_zero_shot.py --llm_path seeklhy/codes-3b-bird --sic_path ./sic_ckpts/sic_bird --table_num 6 --column_num 10 --dataset_path ./data/sft_bird_dev_text2sql.json --max_tokens 4096 --max_new_tokens 256

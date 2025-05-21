@@ -14,7 +14,13 @@ def get_cursor_from_path(sqlite_path):
         raise e
     connection.text_factory = lambda b: b.decode(errors="ignore")
     cursor = connection.cursor()
-    return cursor
+    return cursor, connection
+
+@func_set_timeout(20000)
+def execute_sql_streaming(cursor, sql):
+    cursor.execute(sql)
+    for row in cursor:
+        yield row
 
 # execute predicted sql with a time limitation
 @func_set_timeout(200)
@@ -24,7 +30,7 @@ def execute_sql(cursor, sql):
     return cursor.fetchall()
 
 # execute predicted sql with a long time limitation (for buiding content index)
-@func_set_timeout(2000)
+@func_set_timeout(20000)
 def execute_sql_long_time_limitation(cursor, sql):
     cursor.execute(sql)
 
@@ -34,7 +40,7 @@ def check_sql_executability(generated_sql, db):
     if generated_sql.strip() == "":
         return "Error: empty string"
     try:
-        cursor = get_cursor_from_path(db)
+        cursor, _ = get_cursor_from_path(db)
         # use `EXPLAIN QUERY PLAN` to avoid actually executing
         execute_sql(cursor, "EXPLAIN QUERY PLAN " + generated_sql)
         execution_error = None
@@ -141,7 +147,7 @@ def get_db_schema(db_path, db_comments, db_id):
     else:
         db_comment = None
 
-    cursor = get_cursor_from_path(db_path)
+    cursor, conn = get_cursor_from_path(db_path)
     
     # obtain table names
     results = execute_sql(cursor, "SELECT name FROM sqlite_master WHERE type='table';")

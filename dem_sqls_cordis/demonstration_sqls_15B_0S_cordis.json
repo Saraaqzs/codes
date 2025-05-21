@@ -1,0 +1,402 @@
+[
+  {
+    "question": "Find the total cost of the project Theseus",
+    "demonstrations": []
+  },
+  {
+    "question": "Show total cost of project with title Theseus",
+    "demonstrations": []
+  },
+  {
+    "question": "Show me the acronyms of projects that started in 2018",
+    "demonstrations": []
+  },
+  {
+    "question": "Get acronyms of projects beginning in 2018",
+    "demonstrations": []
+  },
+  {
+    "question": "Show me the titles of projects that started before 2016",
+    "demonstrations": []
+  },
+  {
+    "question": "Find titles of projects which started earlier than 2016",
+    "demonstrations": []
+  },
+  {
+    "question": "Find institutions from the region of Nordjylland",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the name of institutions based in Nordjylland",
+    "demonstrations": []
+  },
+  {
+    "question": "Find the name of principal investigators in projects that started in 2014",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the full name of people being investigators in projects that began in 2014",
+    "demonstrations": []
+  },
+  {
+    "question": "Find projects whose subject area is \u201cMathematics and Statistics\u201d",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the acronym and subject area description of projects with subject area \u201cMathematics and Statistics\u201d",
+    "demonstrations": []
+  },
+  {
+    "question": "Find all different topics of projects that ended in 2014",
+    "demonstrations": []
+  },
+  {
+    "question": "Find distinct titles of topics of projects that with end year 2014",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the acronym of projects with a member from Greece",
+    "demonstrations": []
+  },
+  {
+    "question": "Show names of institutions from France or Germany",
+    "demonstrations": []
+  },
+  {
+    "question": "Show names of institutions which are not from France",
+    "demonstrations": []
+  },
+  {
+    "question": "Count the projects that started in 2016",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the title of the project with the highest total cost",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the name of members in projects costing less than the average project cost.",
+    "demonstrations": []
+  },
+  {
+    "question": "Find the id of projects with at least 100 members",
+    "demonstrations": []
+  },
+  {
+    "question": "Find the code and title of the funding scheme which funded the highest number of projects.",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the total costs of all projects",
+    "demonstrations": []
+  },
+  {
+    "question": "Show me the title of projects which have an end year and a start year after 2006",
+    "demonstrations": []
+  },
+  {
+    "question": "Find the projects which lasted the longest and have an end year and a start year",
+    "demonstrations": []
+  },
+  {
+    "question": "Show me topic titles which starts with 'Raw materials'",
+    "demonstrations": []
+  },
+  {
+    "question": "Show me topic titles which contain the word 'climate'",
+    "demonstrations": []
+  },
+  {
+    "question": "Show me the number of projects where Thomas Bell was principal investigator",
+    "demonstrations": []
+  },
+  {
+    "question": "Show me the all different names of people",
+    "demonstrations": []
+  },
+  {
+    "question": "Find the acronym of projects which have total costs between 100000 and 200000",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the title of projects with costs higher than 1000000",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the title of projects with costs higher than a million",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the project title and member name where the member has a partner role ",
+    "demonstrations": []
+  },
+  {
+    "question": "What different research domains do exist?",
+    "demonstrations": []
+  },
+  {
+    "question": "Show me the country name of all institutes.",
+    "demonstrations": []
+  },
+  {
+    "question": "Show me the country of all institutes.",
+    "demonstrations": []
+  },
+  {
+    "question": "What is the country code 2 and country code 3 for Andorra?",
+    "demonstrations": []
+  },
+  {
+    "question": "Find the code of the funding scheme for Framework Partnership Agreement",
+    "demonstrations": []
+  },
+  {
+    "question": "Show me the full title of the program which is called 'Transport' in short.",
+    "demonstrations": []
+  },
+  {
+    "question": "Find member name and role code of project members in project with acronym GTBB",
+    "demonstrations": []
+  },
+  {
+    "question": "Find member name and role code of project members in project GTBB",
+    "demonstrations": []
+  },
+  {
+    "question": "Show titles of programmes which have FP7 as parent program",
+    "demonstrations": []
+  },
+  {
+    "question": "Show titles of programmes which have program with code FP7 as parent program",
+    "demonstrations": []
+  },
+  {
+    "question": "Get panel descriptions from research domain Life Sciences",
+    "demonstrations": []
+  },
+  {
+    "question": "Get panel descriptions from research domain life sciences",
+    "demonstrations": []
+  },
+  {
+    "question": "Find project members of type Research Organisations",
+    "demonstrations": []
+  },
+  {
+    "question": "Get names of project members who's activity type description is Research Organisations",
+    "demonstrations": []
+  },
+  {
+    "question": "What is the objective of DEEPCARBON?",
+    "demonstrations": []
+  },
+  {
+    "question": "What is the objective of the project with acronym DEEPCARBON?",
+    "demonstrations": []
+  },
+  {
+    "question": "Get the title of projects having the term 'carbon capturing' in it's objective.",
+    "demonstrations": []
+  },
+  {
+    "question": "How many projects have an objective which contains 'carbon capturing'?",
+    "demonstrations": []
+  },
+  {
+    "question": "Show all names of institutions from France except institutions from the territorial region of Paris",
+    "demonstrations": []
+  },
+  {
+    "question": "Show institutions from France except the ones from Paris",
+    "demonstrations": []
+  },
+  {
+    "question": "Which institutions have never been project coordinators",
+    "demonstrations": []
+  },
+  {
+    "question": "Show all of the instituions that have never coordinated a project",
+    "demonstrations": []
+  },
+  {
+    "question": "Show all of the names of people who have worked on multiple projects",
+    "demonstrations": []
+  },
+  {
+    "question": "Which people have worked on more than one project",
+    "demonstrations": []
+  },
+  {
+    "question": "What is the title of the subject area that has been granted the most funding",
+    "demonstrations": []
+  },
+  {
+    "question": "Which subject area has recieved the highest funding contribution?",
+    "demonstrations": []
+  },
+  {
+    "question": "Which subject area has recieved the least funding contribution",
+    "demonstrations": []
+  },
+  {
+    "question": "What is the title of the subject area that has been granted the least amount of funding",
+    "demonstrations": []
+  },
+  {
+    "question": "Which institution has participated in the most projects",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the institution that has been involved in the highest number of projects",
+    "demonstrations": []
+  },
+  {
+    "question": "Which institution has participated in the fewest projects",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the institution that has been involved in the least amount of projects",
+    "demonstrations": []
+  },
+  {
+    "question": "Which funding scheme provided the most funding",
+    "demonstrations": []
+  },
+  {
+    "question": "Which funding scheme provided the least funding",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the industrial partners that have worked on projects and the amount of funding they have recieved in order from most to least",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the amount of funding and corresponding list of industrial partners that have worked on projects in order from the most funding to the least funding",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the title and the start year of the most recent projects",
+    "demonstrations": []
+  },
+  {
+    "question": "Which projects have started most recently?",
+    "demonstrations": []
+  },
+  {
+    "question": "Show title and the starting year of the least recent projects",
+    "demonstrations": []
+  },
+  {
+    "question": "Which projects have started the least recently?",
+    "demonstrations": []
+  },
+  {
+    "question": "What is the starting date of the first recorded project",
+    "demonstrations": []
+  },
+  {
+    "question": "On which date did the first project start?",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the titles of all of the projects in the subject area of Climate change and Carbon cycle research",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the titles of all of the projects that share the subject area code 'CCC",
+    "demonstrations": []
+  },
+  {
+    "question": "List all of the possible roles that project members can have in projects",
+    "demonstrations": []
+  },
+  {
+    "question": "What are all of the ways that projects members can participate in projects?",
+    "demonstrations": []
+  },
+  {
+    "question": "How many erc panels are dedicated to Life Sciences",
+    "demonstrations": []
+  },
+  {
+    "question": "Count the number of erc panels that are part of Life Sciences",
+    "demonstrations": []
+  },
+  {
+    "question": "List all of the european research council panels related to social sciences and humanities",
+    "demonstrations": []
+  },
+  {
+    "question": "How many european research council panels are related to social sciences and humanities",
+    "demonstrations": []
+  },
+  {
+    "question": "Show all of the project members that are private for profit entities",
+    "demonstrations": []
+  },
+  {
+    "question": "Which project members are businesses?",
+    "demonstrations": []
+  },
+  {
+    "question": "How many project members are businesses?",
+    "demonstrations": []
+  },
+  {
+    "question": "How many project members are Higher or Secondary Education Establishments?",
+    "demonstrations": []
+  },
+  {
+    "question": "Count the number of project members that are Educational Establishments",
+    "demonstrations": []
+  },
+  {
+    "question": "How many projects have been related to Robotics?",
+    "demonstrations": []
+  },
+  {
+    "question": "What is the number of projects that have been carried out in the subject area of Robotics?",
+    "demonstrations": []
+  },
+  {
+    "question": "Which non-EU entity has recieved the most funding through a project?",
+    "demonstrations": []
+  },
+  {
+    "question": "Which entity located outside of the EU has received the most funding?",
+    "demonstrations": []
+  },
+  {
+    "question": "Which non-EU entity has recieved the least funding through a project?",
+    "demonstrations": []
+  },
+  {
+    "question": "Which entity located outside of the EU has received the least funding?",
+    "demonstrations": []
+  },
+  {
+    "question": "How many non-EU entities have participated in projects?",
+    "demonstrations": []
+  },
+  {
+    "question": "Which entities that are located outside of the European Union have participated in projects?",
+    "demonstrations": []
+  },
+  {
+    "question": "Show all of the programmes with titles that are related to climate",
+    "demonstrations": []
+  },
+  {
+    "question": "List the programms that have the term climate in the title",
+    "demonstrations": []
+  },
+  {
+    "question": "Show the title and amount of funds that have been allocated per programme",
+    "demonstrations": []
+  },
+  {
+    "question": "List all of the titles and the amount of funding that has been dispersed per programme",
+    "demonstrations": []
+  }
+]

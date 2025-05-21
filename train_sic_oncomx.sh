@@ -1,6 +1,6 @@
 set -e
 
-# Train schema filter using oncomx
+# Train schema filter using Oncomx
 python -u train_schema_item_filter.py \
     --batch_size 4 \
     --gradient_descent_step 8 \
@@ -17,3 +17,5 @@ python -u train_schema_item_filter.py \
     --dev_filepath ./data/sft_oncomx_dev_text2sql.json \
     --model_name_or_path roberta-large \
     --mode train
+
+

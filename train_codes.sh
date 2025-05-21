@@ -1,22 +1,23 @@
 set -e
 
-# -------------- Training on oncomx -------------- #
+# -------------- Training on sdss -------------- #
 
-accelerate launch train_causal_lm.py \
---per_device_train_batch_size 4 \
---block_size 4096 \
+accelerate launch --config_file default_config.yaml train_causal_lm.py \
+--per_device_train_batch_size 2 \
+--block_size 1024 \
 --seed 42 \
---pretrained_model_name_or_path seeklhy/codes-1b \
---epochs 1 \
+--pretrained_model_name_or_path seeklhy/codes-3b \
+--epochs 4 \
 --lr 5e-6 \
 --warmup_ratio 0.05 \
 --checkpointing_steps 100000 \
---tensorboard_log_dir ./train_logs/codes-1b-oncomx \
+--tensorboard_log_dir ./train_logs/codes-3b-sdss \
 --mode sft \
---output_ckpt_dir ./ckpts/codes-1b-oncomx \
---text2sql_data_dir ./data/sft_oncomx_train_text2sql.json \
---table_num 25 \
---column_num 106
+--output_ckpt_dir ./ckpts/codes-3b-4ep-sdss \
+--text2sql_data_dir ./data/sft_sdss_train_text2sql.json \
+--table_num 6 \
+--column_num 61 \
+--pred_tag 3B_4ep
 
 # -------------- Training on Spider -------------- #
 # SFT CodeS-1B on Spider

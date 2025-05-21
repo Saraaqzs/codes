@@ -111,7 +111,7 @@ CREATE TABLE anatomical_entity (
 	CONSTRAINT idx_18439_primary PRIMARY KEY (test_trade_name, test_submission, test_trial_id), 
 	CONSTRAINT fk_biomarker_fda_test_trial FOREIGN KEY(test_submission, test_trade_name) REFERENCES biomarker_fda_test (test_submission, test_trade_name) ON DELETE CASCADE ON UPDATE CASCADE
 );CREATE TABLE biomarker_fda_test_use (
-	id INTEGER NOT NULL, 
+	id INTEGER  NOT NULL, 
 	test_trade_name VARCHAR NOT NULL, 
 	test_submission VARCHAR NOT NULL, 
 	approved_indication VARCHAR NOT NULL, 
@@ -119,7 +119,7 @@ CREATE TABLE anatomical_entity (
 	CONSTRAINT idx_18447_primary PRIMARY KEY (id), 
 	CONSTRAINT fk_biomarker_fda_test_use FOREIGN KEY(test_submission, test_trade_name) REFERENCES biomarker_fda_test (test_submission, test_trade_name) ON DELETE CASCADE ON UPDATE CASCADE
 );CREATE TABLE disease_mutation (
-	id INTEGER NOT NULL, 
+	id INTEGER  NOT NULL, 
 	chromosome_id VARCHAR NOT NULL, 
 	chromosome_pos INTEGER NOT NULL, 
 	ref_nt VARCHAR NOT NULL, 
@@ -165,7 +165,7 @@ CREATE TABLE anatomical_entity (
 	CONSTRAINT idx_18472_primary PRIMARY KEY (disease_mutation_id, pmid), 
 	CONSTRAINT fk_dm_article_id FOREIGN KEY(disease_mutation_id) REFERENCES disease_mutation (id) ON DELETE CASCADE ON UPDATE CASCADE
 );CREATE TABLE disease_mutation_impact_prediction (
-	id INTEGER NOT NULL, 
+	id INTEGER  NOT NULL, 
 	disease_mutation_id INTEGER NOT NULL, 
 	site_prediction VARCHAR NOT NULL, 
 	probability FLOAT, 
@@ -173,7 +173,7 @@ CREATE TABLE anatomical_entity (
 	CONSTRAINT idx_18477_primary PRIMARY KEY (id), 
 	CONSTRAINT fk_dm_impact_prediction_id FOREIGN KEY(disease_mutation_id) REFERENCES disease_mutation (id) ON DELETE CASCADE ON UPDATE CASCADE
 );CREATE TABLE disease_mutation_site_annotation (
-	id INTEGER NOT NULL, 
+	id INTEGER  NOT NULL, 
 	disease_mutation_id INTEGER NOT NULL, 
 	description VARCHAR, 
 	feature_key VARCHAR NOT NULL, 
@@ -186,3 +186,4 @@ CREATE TABLE anatomical_entity (
 	CONSTRAINT idx_fk_disease_mutation_id FOREIGN KEY(disease_mutation_id) REFERENCES disease_mutation (id) ON DELETE CASCADE ON UPDATE CASCADE, 
 	CONSTRAINT idx_fk_disease_mutation_uberon FOREIGN KEY(uberon_anatomical_id) REFERENCES anatomical_entity (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+

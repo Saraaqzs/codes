@@ -75,7 +75,7 @@ def extract_skeleton(text):
 
 def prepare_input_ids_and_attention_mask(tokenizer, input_seq, max_input_length, device):
     input_ids = tokenizer(input_seq , truncation = False)["input_ids"]
-
+    print("len(input_ids) before shortening:", len(input_ids)) 
     if len(input_ids) <= max_input_length:
         input_ids = input_ids
         attention_mask = [1] * len(input_ids)
@@ -102,6 +102,8 @@ def prepare_cross_domain_input_seq(opt, eval_data, demonstration_set, similarity
     print(similarity[top_k_indices])
 
     input_seq = ""
+    demonstration_sqls = []
+
     for idx in top_k_indices:
         demonstration_sql = demonstration_set[idx]["sql"]
         if demonstration_sql.endswith(";"):
@@ -111,12 +113,18 @@ def prepare_cross_domain_input_seq(opt, eval_data, demonstration_set, similarity
 
         input_seq += demonstration_set[idx]["schema_sequence"] + "\n" + demonstration_set[idx]["content_sequence"] + "\n" + \
             demonstration_set[idx]["text"] + "\n" + demonstration_sql + "\n\n"
+        demonstration_sqls.append(
+                {
+                    "input": demonstration_set[idx]["question"],
+                    "query": demonstration_sql,
+                    }
+                )
 
     input_seq += eval_data["schema_sequence"] + "\n" + eval_data["content_sequence"] + "\n" + eval_data["text"] + "\n"
     # print(input_seq)
     # print("-"*30)
 
-    return input_seq
+    return input_seq, demonstration_sqls
 
 def text2sql_func(model, text2sql_input_seq, tokenizer, max_tokens, max_new_tokens, eos_token_id):
     inputs = prepare_input_ids_and_attention_mask(
@@ -209,8 +217,15 @@ if __name__ == "__main__":
     print("max_new_tokens:", max_new_tokens)
 
     predicted_sqls = []
+    demonstration_sqls = []
     for eval_data_idx, eval_data in tqdm(enumerate(eval_set)):
-        input_seq = prepare_cross_domain_input_seq(opt, eval_data, demonstration_set, similarities[eval_data_idx])
+        input_seq, demonstration_sql = prepare_cross_domain_input_seq(opt, eval_data, demonstration_set, similarities[eval_data_idx])
+        eval_set_question = eval_set_questions[eval_data_idx]
+        entry = {
+                        "question": eval_set_question,
+                        "demonstrations": demonstration_sql
+            }
+        demonstration_sqls.append(entry)
     
         if eval_data_idx < 2:
             print(input_seq)
@@ -233,7 +248,8 @@ if __name__ == "__main__":
         
         print(final_generated_sql)
         predicted_sqls.append(final_generated_sql)
-
+    with open(f"./dem_sqls/demonstration_sqls_{opt.pred_tag}.json", "w", encoding="utf-8") as f:
+        f.write(json.dumps(demonstration_sqls, ensure_ascii=True, indent=2) + "\n")
     print("LLM name:", opt.llm_path)
     if "bird" in opt.dataset_path:
         bird_results_dict = dict()
@@ -262,10 +278,34 @@ if __name__ == "__main__":
                 f.write(sql + "\n")
         print("Execution accuracy:")
         os.system('python -u evaluate_ex.py --pred pred_sqls.txt --gold {} --db ./data/sft_data_collections/domain_datasets/databases/Aminer_Simplified/Aminer_Simplified.sqlite'.format(opt.dataset_path))
+    
     elif "oncomx" in opt.dataset_path:
         #with open("pred_sqls.txt", "w", encoding = 'utf-8') as f:
-        with open("pred_sqls_"+opt.pred_tag+".txt", "w", encoding = 'utf-8') as f:
+
+        with open(f"./dem_sqls_oncomx/demonstration_sqls_{opt.pred_tag}.json", "w", encoding="utf-8") as f:
+            f.write(json.dumps(demonstration_sqls, ensure_ascii=True, indent=2) + "\n")
+        with open(f"./pred_sqls_oncomx/pred_sqls_{opt.pred_tag}.txt", "w", encoding = 'utf-8') as f:
             for sql in predicted_sqls:
                 f.write(sql + "\n")
-        print("Execution accuracy:")
-        os.system('python -u evaluate_ex.py --pred pred_sqls_"+opt.pred_tag+".txt --gold {} --db ./data/sft_data_collections/oncomx/oncomx_v1_0_25_small/oncomx_v1_0_25_small.sqlite'.format(opt.dataset_path))
+        #print("Execution accuracy:")
+        #os.system(f'python -u evaluate_ex.py --pred ./pred_sqls_oncomx/pred_sqls_{opt.pred_tag}.txt --gold {opt.dataset_path} --db ./data/sft_data_collections/oncomx/oncomx_v1_0_25_small/oncomx_v1_0_25_small.sqlite')
+
+    elif "cordis" in opt.dataset_path:
+        with open(f"./dem_sqls_cordis/demonstration_sqls_{opt.pred_tag}.json", "w", encoding="utf-8") as f:
+            f.write(json.dumps(demonstration_sqls, ensure_ascii=True, indent=2) + "\n")
+        #with open("pred_sqls.txt", "w", encoding = 'utf-8') as f:
+        with open(f"./pred_sqls_cordis/pred_sqls_{opt.pred_tag}.txt", "w", encoding = 'utf-8') as f:
+            for sql in predicted_sqls:
+                f.write(sql + "\n")
+        #print("Execution accuracy:")
+        #os.system(f'python -u evaluate_ex.py --pred ./pred_sqls_cordis/pred_sqls_{opt.pred_tag}.txt --gold {opt.dataset_path} --db ./data/sft_data_collections/cordis/cordis_temporary/cordis_temporary.sqlite')
+
+    elif "sdss" in opt.dataset_path:
+        with open(f"./dem_sqls_sdss/demonstration_sqls_{opt.pred_tag}.json", "w", encoding="utf-8") as f:
+            f.write(json.dumps(demonstration_sqls, ensure_ascii=True, indent=2) + "\n")
+        #with open("pred_sqls.txt", "w", encoding = 'utf-8') as f:
+        with open(f"./pred_sqls_sdss/pred_sqls_{opt.pred_tag}.txt", "w", encoding = 'utf-8') as f:
+            for sql in predicted_sqls:
+                f.write(sql + "\n")
+        #print("Execution accuracy:")
+        #os.system(f'python -u evaluate_ex.py --pred ./pred_sqls_sdss/pred_sqls_{opt.pred_tag}.txt --gold {opt.dataset_path} --db ./data/sft_data_collections/sdss/skyserver_dr16_2020_11_30/skyserver_dr16_2020_11_30.sqlite')

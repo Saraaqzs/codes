@@ -18,7 +18,7 @@ def parse_option():
     parser.add_argument('--column_num', type = int, default = 10)
 
     parser.add_argument('--dataset_path', type = str)
-
+    parser.add_argument('--pred_tag', type = str)
     parser.add_argument('--max_tokens', type = int, default = 4096)
     parser.add_argument('--max_new_tokens', type = int, default = 256)
     
@@ -188,3 +188,26 @@ if __name__ == "__main__":
                 f.write(sql + "\n")
         print("Execution accuracy:")
         os.system('python -u evaluate_ex.py --pred pred_sqls.txt --gold {} --db ./data/sft_data_collections/domain_datasets/databases/Aminer_Simplified/Aminer_Simplified.sqlite'.format(opt.dataset_path))
+
+    elif "oncomx" in opt.dataset_path:
+        with open(f"./pred_sqls_oncomx/pred_sqls_{opt.pred_tag}.txt", "w", encoding = 'utf-8') as f:
+            for sql in predicted_sqls:
+                f.write(sql + "\n")
+        print("Execution accuracy:")
+        os.system(f'python -u evaluate_ex.py --pred ./pred_sqls_oncomx/pred_sqls_{opt.pred_tag}.txt --gold {opt.dataset_path} --db ./data/sft_data_collections/oncomx/oncomx_v1_0_25_small/oncomx_v1_0_25_small.sqlite')
+
+    elif "cordis" in opt.dataset_path:
+        with open(f"./pred_sqls_cordis/pred_sqls_{opt.pred_tag}.txt", "w", encoding = 'utf-8') as f:
+            for sql in predicted_sqls:
+                f.write(sql + "\n")
+        print("Execution accuracy:")
+        os.system(f'python -u evaluate_ex.py --pred ./pred_sqls_cordis/pred_sqls_{opt.pred_tag}.txt --gold {opt.dataset_path} --db ./data/sft_data_collections/cordis/cordis_temporary/cordis_temporary.sqlite')
+
+    elif "sdss" in opt.dataset_path:
+        #with open("pred_sqls.txt", "w", encoding = 'utf-8') as f:
+        with open(f"./pred_sqls_sdss/pred_sqls_{opt.pred_tag}.txt", "w", encoding = 'utf-8') as f:
+            for sql in predicted_sqls:
+                f.write(sql + "\n")
+        print("Execution accuracy:")
+        os.system(f'python -u evaluate_ex.py --pred ./pred_sqls_sdss/pred_sqls_{opt.pred_tag}.txt --gold {opt.dataset_path} --db ./data/sft_data_collections/sdss/skyserver_dr16_2020_11_30/skyserver_dr16_2020_11_30.sqlite')
+        #/scratch/codes/data/sft_data_collections/cordis/cordis_temporary
