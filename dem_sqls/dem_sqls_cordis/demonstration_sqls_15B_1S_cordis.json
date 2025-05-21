@@ -1,0 +1,902 @@
+[
+  {
+    "question": "Find the total cost of the project Theseus",
+    "demonstrations": [
+      {
+        "input": "The total number of projects.",
+        "query": "SELECT count(*) FROM projects ;"
+      }
+    ]
+  },
+  {
+    "question": "Show total cost of project with title Theseus",
+    "demonstrations": [
+      {
+        "input": "Total number of project titles.",
+        "query": "SELECT projects.title, count(*) FROM projects  GROUP BY projects.title ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the acronyms of projects that started in 2018",
+    "demonstrations": [
+      {
+        "input": "Show me projects that started before the year 2018",
+        "query": "SELECT projects.start_date FROM projects WHERE projects.start_year != 2018 ;"
+      }
+    ]
+  },
+  {
+    "question": "Get acronyms of projects beginning in 2018",
+    "demonstrations": [
+      {
+        "input": "Show all projects starting in 2019",
+        "query": "SELECT projects.ec_call FROM projects WHERE projects.start_year = 2019 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the titles of projects that started before 2016",
+    "demonstrations": [
+      {
+        "input": "Show me projects that started before the year 2018",
+        "query": "SELECT projects.start_date FROM projects WHERE projects.start_year != 2018 ;"
+      }
+    ]
+  },
+  {
+    "question": "Find titles of projects which started earlier than 2016",
+    "demonstrations": [
+      {
+        "input": "Show me projects that started before the year 2018",
+        "query": "SELECT projects.start_date FROM projects WHERE projects.start_year != 2018 ;"
+      }
+    ]
+  },
+  {
+    "question": "Find institutions from the region of Nordjylland",
+    "demonstrations": [
+      {
+        "input": "Retrieve project member roles of the department of Computer Science from Paris.",
+        "query": "SELECT project_members.member_role FROM project_members WHERE project_members.department_name = 'Department of Computer Science' AND project_members.city = 'PARIS' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the name of institutions based in Nordjylland",
+    "demonstrations": [
+      {
+        "input": "Show the description of research domains with code ID",
+        "query": "SELECT erc_research_domains.description FROM erc_research_domains WHERE erc_research_domains.code = 'ID' ;"
+      }
+    ]
+  },
+  {
+    "question": "Find the name of principal investigators in projects that started in 2014",
+    "demonstrations": [
+      {
+        "input": "Show the starting year of projects assigned to the principal investigator Willem Schinkel.",
+        "query": "SELECT projects.start_year FROM projects JOIN people ON projects.principal_investigator = people.unics_id WHERE people.full_name = 'Willem Schinkel' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the full name of people being investigators in projects that began in 2014",
+    "demonstrations": [
+      {
+        "input": "Show me the full name of those who participated as principal investigators on projects whose EC call is H2020-MSCA-ITN-2015.",
+        "query": "SELECT people.full_name FROM people JOIN projects ON people.unics_id = projects.principal_investigator WHERE projects.ec_call = 'H2020-MSCA-ITN-2015' ;"
+      }
+    ]
+  },
+  {
+    "question": "Find projects whose subject area is \u201cMathematics and Statistics\u201d",
+    "demonstrations": [
+      {
+        "input": "Show subject areas with title \u201cSustainable development \u201c",
+        "query": "SELECT subject_areas.description FROM subject_areas WHERE subject_areas.title = 'Sustainable development ' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the acronym and subject area description of projects with subject area \u201cMathematics and Statistics\u201d",
+    "demonstrations": [
+      {
+        "input": "Show the subject areas with code MBI",
+        "query": "SELECT subject_areas.title FROM subject_areas WHERE subject_areas.code = 'MBI' ;"
+      }
+    ]
+  },
+  {
+    "question": "Find all different topics of projects that ended in 2014",
+    "demonstrations": [
+      {
+        "input": "Show all activity types descriptions different than \"PUB\".",
+        "query": "SELECT activity_types.description FROM activity_types WHERE activity_types.code != 'PUB' ;"
+      }
+    ]
+  },
+  {
+    "question": "Find distinct titles of topics of projects that with end year 2014",
+    "demonstrations": [
+      {
+        "input": "Show the country name of institutions different from 283110",
+        "query": "SELECT countries.country_name FROM countries JOIN institutions ON countries.unics_id = institutions.country_id WHERE institutions.unics_id != 283110 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the acronym of projects with a member from Greece",
+    "demonstrations": [
+      {
+        "input": "Show the description of research domains with code ID",
+        "query": "SELECT erc_research_domains.description FROM erc_research_domains WHERE erc_research_domains.code = 'ID' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show names of institutions from France or Germany",
+    "demonstrations": [
+      {
+        "input": "Show country names of countries with either the code GW or LK",
+        "query": "SELECT countries.country_name FROM countries WHERE countries.country_code2 = 'GW' OR countries.country_code2 = 'LK' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show names of institutions which are not from France",
+    "demonstrations": [
+      {
+        "input": "Display activity types which are not 'OTH'",
+        "query": "SELECT activity_types.description FROM activity_types WHERE activity_types.code != 'OTH' ;"
+      }
+    ]
+  },
+  {
+    "question": "Count the projects that started in 2016",
+    "demonstrations": [
+      {
+        "input": "Show the description of all ERC panels of projects that started in 2016",
+        "query": "SELECT DISTINCT erc_panels.description FROM projects JOIN project_erc_panels ON projects.unics_id = project_erc_panels.project JOIN erc_panels ON project_erc_panels.panel = erc_panels.code WHERE projects.start_year = '2016' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the title of the project with the highest total cost",
+    "demonstrations": [
+      {
+        "input": "Show the latitude of the project member with the highest EC contribution.",
+        "query": "SELECT project_members.latitude FROM project_members    ORDER BY project_members.ec_contribution DESC LIMIT 1 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the name of members in projects costing less than the average project cost.",
+    "demonstrations": [
+      {
+        "input": "Show project members' roles where the project members' contribution is != 169610.0",
+        "query": "SELECT project_member_roles.description FROM project_member_roles JOIN project_members ON project_member_roles.code = project_members.member_role WHERE project_members.ec_contribution != 169610.0 ;"
+      }
+    ]
+  },
+  {
+    "question": "Find the id of projects with at least 100 members",
+    "demonstrations": [
+      {
+        "input": "Show the vat number of project members having one of the two ids 506988 or 507433",
+        "query": "SELECT project_members.vat_number FROM project_members WHERE project_members.unics_id = 506988 OR project_members.unics_id = 507433 ;"
+      }
+    ]
+  },
+  {
+    "question": "Find the code and title of the funding scheme which funded the highest number of projects.",
+    "demonstrations": [
+      {
+        "input": "Show me all the funding scheme titles for the funding scheme with code CIP-ICT-PSP-PA .",
+        "query": "SELECT funding_schemes.title FROM funding_schemes WHERE funding_schemes.code = 'CIP-ICT-PSP-PA' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the total costs of all projects",
+    "demonstrations": [
+      {
+        "input": "Show the code for all projects with a total cost != 3995036.25",
+        "query": "SELECT programmes.rcn FROM programmes JOIN project_programmes ON programmes.code = project_programmes.programme JOIN projects ON project_programmes.project = projects.unics_id WHERE projects.total_cost != 3995036.25 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the title of projects which have an end year and a start year after 2006",
+    "demonstrations": [
+      {
+        "input": "Show me the name of countries that have either a country code of LB or a country code of PG",
+        "query": "SELECT countries.country_name FROM countries WHERE countries.country_code2 = 'LB' OR countries.country_code2 = 'PG' ;"
+      }
+    ]
+  },
+  {
+    "question": "Find the projects which lasted the longest and have an end year and a start year",
+    "demonstrations": [
+      {
+        "input": "Retrieve the subject areas of projects that did not end in 2012-07-31",
+        "query": "SELECT subject_areas.title FROM subject_areas JOIN project_subject_areas ON subject_areas.code = project_subject_areas.subject_area JOIN projects ON project_subject_areas.project = projects.unics_id WHERE projects.end_date != '2012-07-31' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me topic titles which starts with 'Raw materials'",
+    "demonstrations": [
+      {
+        "input": "Show me the topics with title Semiconductor Processing, Equipment and Materials that ends with SPIRE-08-2015",
+        "query": "SELECT topics.rcn FROM topics WHERE topics.code = 'SPIRE-08-2015' AND topics.title = 'Semicondutor Process, Equipment and Materials' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me topic titles which contain the word 'climate'",
+    "demonstrations": [
+      {
+        "input": "Show me the description of subject areas with title 'Climate change and Carbon cycle research'",
+        "query": "SELECT subject_areas.description FROM subject_areas WHERE subject_areas.title = 'Climate change and Carbon cycle research' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the number of projects where Thomas Bell was principal investigator",
+    "demonstrations": [
+      {
+        "input": "Show me the full name of people who are principal investigators and have a project with an acronym of ``CyberGenetics``",
+        "query": "SELECT people.full_name FROM people JOIN projects ON people.unics_id = projects.principal_investigator WHERE projects.acronym = 'CyberGenetics' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the all different names of people",
+    "demonstrations": [
+      {
+        "input": "Show me all country names of institutions which are different than 283110",
+        "query": "SELECT countries.country_name FROM countries JOIN institutions ON countries.unics_id = institutions.country_id WHERE institutions.unics_id != 283110 ;"
+      }
+    ]
+  },
+  {
+    "question": "Find the acronym of projects which have total costs between 100000 and 200000",
+    "demonstrations": [
+      {
+        "input": "The total number of projects.",
+        "query": "SELECT count(*) FROM projects ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the title of projects with costs higher than 1000000",
+    "demonstrations": [
+      {
+        "input": "Show the latitude of the project member with the highest EC contribution.",
+        "query": "SELECT project_members.latitude FROM project_members    ORDER BY project_members.ec_contribution DESC LIMIT 1 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the title of projects with costs higher than a million",
+    "demonstrations": [
+      {
+        "input": "Show the latitude of the project member with the highest EC contribution.",
+        "query": "SELECT project_members.latitude FROM project_members    ORDER BY project_members.ec_contribution DESC LIMIT 1 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the project title and member name where the member has a partner role ",
+    "demonstrations": [
+      {
+        "input": "Display the name and Wikipedia URL of institutions located in Swaziland.",
+        "query": "SELECT institutions.db_pedia_url FROM institutions JOIN countries ON institutions.country_id = countries.unics_id WHERE countries.country_name = 'Swaziland' ;"
+      }
+    ]
+  },
+  {
+    "question": "What different research domains do exist?",
+    "demonstrations": [
+      {
+        "input": "What is the number of different research domains?",
+        "query": "SELECT erc_research_domains.description, count(*) FROM erc_research_domains  GROUP BY erc_research_domains.description ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the country name of all institutes.",
+    "demonstrations": [
+      {
+        "input": "Show me the name of all countries with country code KW.",
+        "query": "SELECT countries.country_name FROM countries WHERE countries.country_code2 = 'KW' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the country of all institutes.",
+    "demonstrations": [
+      {
+        "input": "Show me the name of all countries with country code KW.",
+        "query": "SELECT countries.country_name FROM countries WHERE countries.country_code2 = 'KW' ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the country code 2 and country code 3 for Andorra?",
+    "demonstrations": [
+      {
+        "input": "What are the titles of the topics that have code PHC-15-2014 and whose research council number is 665272?",
+        "query": "SELECT topics.title FROM topics WHERE topics.code = 'PHC-15-2014' AND topics.rcn = '665272' ;"
+      }
+    ]
+  },
+  {
+    "question": "Find the code of the funding scheme for Framework Partnership Agreement",
+    "demonstrations": [
+      {
+        "input": "Retrieve project member roles of the department of Computer Science from Paris.",
+        "query": "SELECT project_members.member_role FROM project_members WHERE project_members.department_name = 'Department of Computer Science' AND project_members.city = 'PARIS' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show me the full title of the program which is called 'Transport' in short.",
+    "demonstrations": [
+      {
+        "input": "Show me the titles of the programmes with short name MCSA Initial training",
+        "query": "SELECT programmes.title FROM programmes WHERE programmes.short_name = 'MCSA Initial training' ;"
+      }
+    ]
+  },
+  {
+    "question": "Find member name and role code of project members in project with acronym GTBB",
+    "demonstrations": [
+      {
+        "input": "Show the country name of institutions with acronym CNRS",
+        "query": "SELECT countries.country_name FROM countries JOIN institutions ON countries.unics_id = institutions.country_id WHERE institutions.acronym = 'CNRS' ;"
+      }
+    ]
+  },
+  {
+    "question": "Find member name and role code of project members in project GTBB",
+    "demonstrations": [
+      {
+        "input": "Show country codes of institutions with name BOUWRADIUS TRAINING & ADVIES BV",
+        "query": "SELECT countries.country_code2 FROM countries JOIN institutions ON countries.unics_id = institutions.country_id WHERE institutions.institutions_name = 'BOUWRADIUS TRAINING & ADVIES BV' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show titles of programmes which have FP7 as parent program",
+    "demonstrations": [
+      {
+        "input": "Count the number of programmes that have rcn 19514",
+        "query": "SELECT count(*) FROM programmes WHERE programmes.rcn = '19514' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show titles of programmes which have program with code FP7 as parent program",
+    "demonstrations": [
+      {
+        "input": "Show the title of the programme with code NMP-2009-4.0-4",
+        "query": "SELECT programmes.title FROM programmes WHERE programmes.code = 'NMP-2009-4.0-4' ;"
+      }
+    ]
+  },
+  {
+    "question": "Get panel descriptions from research domain Life Sciences",
+    "demonstrations": [
+      {
+        "input": "Show activity types of project members",
+        "query": "SELECT project_members.activity_type FROM project_members WHERE project_members.member_role = 'participant' ;"
+      }
+    ]
+  },
+  {
+    "question": "Get panel descriptions from research domain life sciences",
+    "demonstrations": [
+      {
+        "input": "Show activity types of project members",
+        "query": "SELECT project_members.activity_type FROM project_members WHERE project_members.member_role = 'participant' ;"
+      }
+    ]
+  },
+  {
+    "question": "Find project members of type Research Organisations",
+    "demonstrations": [
+      {
+        "input": "Show project member roles for project members whose street is Jamova 39.",
+        "query": "SELECT project_member_roles.description FROM project_member_roles JOIN project_members ON project_member_roles.code = project_members.member_role WHERE project_members.street = 'Jamova 39' ;"
+      }
+    ]
+  },
+  {
+    "question": "Get names of project members who's activity type description is Research Organisations",
+    "demonstrations": [
+      {
+        "input": "Count countries whose name is Italy",
+        "query": "SELECT count(*) FROM countries WHERE countries.country_name = 'Italy' ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the objective of DEEPCARBON?",
+    "demonstrations": [
+      {
+        "input": "What is the number of countries?",
+        "query": "SELECT countries.country_code2, count(*) FROM countries  GROUP BY countries.country_code2 ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the objective of the project with acronym DEEPCARBON?",
+    "demonstrations": [
+      {
+        "input": "Show the country name of institutions with acronym CNRS",
+        "query": "SELECT countries.country_name FROM countries JOIN institutions ON countries.unics_id = institutions.country_id WHERE institutions.acronym = 'CNRS' ;"
+      }
+    ]
+  },
+  {
+    "question": "Get the title of projects having the term 'carbon capturing' in it's objective.",
+    "demonstrations": [
+      {
+        "input": "What are subject areas whose title is Hydrogen and fuel cells",
+        "query": "SELECT subject_areas.description FROM subject_areas WHERE subject_areas.title = 'Hydrogen and fuel cells' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many projects have an objective which contains 'carbon capturing'?",
+    "demonstrations": [
+      {
+        "input": "How many project member roles are there which have the code 'coordinator'?",
+        "query": "SELECT count(*) FROM project_member_roles WHERE project_member_roles.code = 'coordinator' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all names of institutions from France except institutions from the territorial region of Paris",
+    "demonstrations": [
+      {
+        "input": "Show all the descriptions of territorial units in the region DE919.",
+        "query": "SELECT eu_territorial_units.description FROM eu_territorial_units WHERE eu_territorial_units.geocode_regions = 'DE919' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show institutions from France except the ones from Paris",
+    "demonstrations": [
+      {
+        "input": "Retrieve project member roles of the department of Computer Science from Paris.",
+        "query": "SELECT project_members.member_role FROM project_members WHERE project_members.department_name = 'Department of Computer Science' AND project_members.city = 'PARIS' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which institutions have never been project coordinators",
+    "demonstrations": [
+      {
+        "input": "Show project member roles of project members which are not in the activity PRC",
+        "query": "SELECT project_member_roles.code FROM project_member_roles JOIN project_members ON project_member_roles.code = project_members.member_role WHERE project_members.activity_type != 'PRC' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all of the instituions that have never coordinated a project",
+    "demonstrations": [
+      {
+        "input": "Find all projects of a funding scheme other than \"Best Practice Network\"",
+        "query": "SELECT projects.ec_call FROM projects JOIN funding_schemes ON projects.ec_fund_scheme = funding_schemes.code WHERE funding_schemes.title != 'Best Practice Network' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all of the names of people who have worked on multiple projects",
+    "demonstrations": [
+      {
+        "input": "Show me all full names of people from projects that did not start in 2013.",
+        "query": "SELECT people.full_name FROM people JOIN projects ON people.unics_id = projects.principal_investigator WHERE projects.start_year != 2013 ;"
+      }
+    ]
+  },
+  {
+    "question": "Which people have worked on more than one project",
+    "demonstrations": [
+      {
+        "input": "How many different project members are there that contributed to a project?",
+        "query": "SELECT project_members.ec_contribution, count(*) FROM project_members  GROUP BY project_members.ec_contribution ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the title of the subject area that has been granted the most funding",
+    "demonstrations": [
+      {
+        "input": "What are the subject areas of Funding Programmes and of Innovation and Technology Transfer?",
+        "query": "SELECT subject_areas.code FROM subject_areas WHERE subject_areas.title = 'Funding Programmes' OR subject_areas.title = 'Innovation and Technology Transfer' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which subject area has recieved the highest funding contribution?",
+    "demonstrations": [
+      {
+        "input": "What is the city of the project members with the largest contribution?",
+        "query": "SELECT project_members.city FROM project_members    ORDER BY project_members.ec_contribution DESC LIMIT 1 ;"
+      }
+    ]
+  },
+  {
+    "question": "Which subject area has recieved the least funding contribution",
+    "demonstrations": [
+      {
+        "input": "What are the subject areas of projects that don't have the ec fund scheme MSCA-IF-EF-ST",
+        "query": "SELECT subject_areas.title FROM subject_areas JOIN project_subject_areas ON subject_areas.code = project_subject_areas.subject_area JOIN projects ON project_subject_areas.project = projects.unics_id WHERE projects.ec_fund_scheme != 'MSCA-IF-EF-ST' ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the title of the subject area that has been granted the least amount of funding",
+    "demonstrations": [
+      {
+        "input": "What are the subject areas of projects that don't have the ec fund scheme MSCA-IF-EF-ST",
+        "query": "SELECT subject_areas.title FROM subject_areas JOIN project_subject_areas ON subject_areas.code = project_subject_areas.subject_area JOIN projects ON project_subject_areas.project = projects.unics_id WHERE projects.ec_fund_scheme != 'MSCA-IF-EF-ST' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which institution has participated in the most projects",
+    "demonstrations": [
+      {
+        "input": "What is the city of the most contributing member of projects?",
+        "query": "SELECT project_members.city FROM project_members    ORDER BY project_members.ec_contribution DESC LIMIT 1 ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the institution that has been involved in the highest number of projects",
+    "demonstrations": [
+      {
+        "input": "Show the latitude of the project member with the highest EC contribution.",
+        "query": "SELECT project_members.latitude FROM project_members    ORDER BY project_members.ec_contribution DESC LIMIT 1 ;"
+      }
+    ]
+  },
+  {
+    "question": "Which institution has participated in the fewest projects",
+    "demonstrations": [
+      {
+        "input": "What is the total cost of projects assigned to the institution with short name UTBM for all the departments except Civiele bescherming?",
+        "query": "SELECT sum(projects.total_cost) FROM eu_territorial_units JOIN project_members ON eu_territorial_units.geocode_regions = project_members.geocode_regions_3 JOIN institutions ON institutions.geocode_regions_3 = eu_territorial_units.geocode_regions JOIN projects ON project_members.project = projects.unics_id WHERE project_members.department_name != 'Civiele bescherming' AND institutions.short_name = 'UTBM' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the institution that has been involved in the least amount of projects",
+    "demonstrations": [
+      {
+        "input": "Show the names of the people with a project in a non H2020 framework program",
+        "query": "SELECT people.full_name FROM people JOIN projects ON people.unics_id = projects.principal_investigator WHERE projects.framework_program != 'H2020' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which funding scheme provided the most funding",
+    "demonstrations": [
+      {
+        "input": "How many funding schemes are there?",
+        "query": "SELECT funding_schemes.code, count(*) FROM funding_schemes  GROUP BY funding_schemes.code ;"
+      }
+    ]
+  },
+  {
+    "question": "Which funding scheme provided the least funding",
+    "demonstrations": [
+      {
+        "input": "How many funding schemes are there that are designated as not Available?",
+        "query": "SELECT count(*) FROM funding_schemes WHERE funding_schemes.code = 'notAvailable' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the industrial partners that have worked on projects and the amount of funding they have recieved in order from most to least",
+    "demonstrations": [
+      {
+        "input": "Show the name of project members that contributed with a total of 376250 euro to project 1905551",
+        "query": "SELECT project_members.member_name FROM project_members WHERE project_members.ec_contribution = 376250.0 AND project_members.rcn = '1905551' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the amount of funding and corresponding list of industrial partners that have worked on projects in order from the most funding to the least funding",
+    "demonstrations": [
+      {
+        "input": "Show the number of funding schemes.",
+        "query": "SELECT funding_schemes.title, count(*) FROM funding_schemes  GROUP BY funding_schemes.title ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the title and the start year of the most recent projects",
+    "demonstrations": [
+      {
+        "input": "Count the number of projects for each title.",
+        "query": "SELECT projects.title, count(*) FROM projects  GROUP BY projects.title ;"
+      }
+    ]
+  },
+  {
+    "question": "Which projects have started most recently?",
+    "demonstrations": [
+      {
+        "input": "How many projects started in 2010-03-01?",
+        "query": "SELECT count(*) FROM projects WHERE projects.start_date = '2010-03-01' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show title and the starting year of the least recent projects",
+    "demonstrations": [
+      {
+        "input": "Show me projects that started before the year 2018",
+        "query": "SELECT projects.start_date FROM projects WHERE projects.start_year != 2018 ;"
+      }
+    ]
+  },
+  {
+    "question": "Which projects have started the least recently?",
+    "demonstrations": [
+      {
+        "input": "How many projects started in 2010-03-01?",
+        "query": "SELECT count(*) FROM projects WHERE projects.start_date = '2010-03-01' ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the starting date of the first recorded project",
+    "demonstrations": [
+      {
+        "input": "What is the start year of projects whose principal investigator is Willem Schinkel?",
+        "query": "SELECT projects.start_year FROM projects JOIN people ON projects.principal_investigator = people.unics_id WHERE people.full_name = 'Willem Schinkel' ;"
+      }
+    ]
+  },
+  {
+    "question": "On which date did the first project start?",
+    "demonstrations": [
+      {
+        "input": "Which is the code of the programme \"Planning rail towards 2050?\"",
+        "query": "SELECT programmes.code FROM programmes WHERE programmes.title = 'Planning rail towards 2050' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the titles of all of the projects in the subject area of Climate change and Carbon cycle research",
+    "demonstrations": [
+      {
+        "input": "Show me all the subject areas with a code of HFC",
+        "query": "SELECT subject_areas.title FROM subject_areas WHERE subject_areas.code = 'HFC' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the titles of all of the projects that share the subject area code 'CCC",
+    "demonstrations": [
+      {
+        "input": "Show the title of all programmes of projects with the acronym PhenolAcTwin",
+        "query": "SELECT programmes.title FROM programmes JOIN project_programmes ON programmes.code = project_programmes.programme JOIN projects ON project_programmes.project = projects.unics_id WHERE projects.acronym = 'PhenolAcTwin' ;"
+      }
+    ]
+  },
+  {
+    "question": "List all of the possible roles that project members can have in projects",
+    "demonstrations": [
+      {
+        "input": "Show the number of project member roles",
+        "query": "SELECT project_member_roles.code, count(*) FROM project_member_roles  GROUP BY project_member_roles.code ;"
+      }
+    ]
+  },
+  {
+    "question": "What are all of the ways that projects members can participate in projects?",
+    "demonstrations": [
+      {
+        "input": "How many people participate in projects?",
+        "query": "SELECT count(*) FROM project_members WHERE project_members.member_role = 'participant' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many erc panels are dedicated to Life Sciences",
+    "demonstrations": [
+      {
+        "input": "How many research domains are there in the Life Sciences?",
+        "query": "SELECT count(*) FROM erc_research_domains WHERE erc_research_domains.description = 'Life Sciences' ;"
+      }
+    ]
+  },
+  {
+    "question": "Count the number of erc panels that are part of Life Sciences",
+    "demonstrations": [
+      {
+        "input": "Count the number of eu_territorial_units that have the description \u201cBilecik\u201d",
+        "query": "SELECT count(*) FROM eu_territorial_units WHERE eu_territorial_units.description = 'Bilecik' ;"
+      }
+    ]
+  },
+  {
+    "question": "List all of the european research council panels related to social sciences and humanities",
+    "demonstrations": [
+      {
+        "input": "Show all of the european research council panel descriptions from projects that started in 2016",
+        "query": "SELECT DISTINCT erc_panels.description FROM projects JOIN project_erc_panels ON projects.unics_id = project_erc_panels.project JOIN erc_panels ON project_erc_panels.panel = erc_panels.code WHERE projects.start_year = '2016' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many european research council panels are related to social sciences and humanities",
+    "demonstrations": [
+      {
+        "input": "How many descriptions are there for European Research Council panels?",
+        "query": "SELECT count(DISTINCT erc_panels.description) FROM project_erc_panels JOIN erc_panels ON project_erc_panels.panel = erc_panels.code ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all of the project members that are private for profit entities",
+    "demonstrations": [
+      {
+        "input": "Show all activity types of project members which are not from UMCG",
+        "query": "SELECT activity_types.description FROM activity_types JOIN project_members ON activity_types.code = project_members.activity_type WHERE project_members.member_short_name != 'UMCG' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which project members are businesses?",
+    "demonstrations": [
+      {
+        "input": "Which are the country codes of the countries with country name Micronesia?",
+        "query": "SELECT countries.country_code2 FROM countries WHERE countries.country_name = 'Micronesia' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many project members are businesses?",
+    "demonstrations": [
+      {
+        "input": "How many topics are in the RCN 12703?",
+        "query": "SELECT count(*) FROM topics WHERE topics.rcn = '12703' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many project members are Higher or Secondary Education Establishments?",
+    "demonstrations": [
+      {
+        "input": "How many project members are there in total?",
+        "query": "SELECT project_members.ec_contribution, count(*) FROM project_members  GROUP BY project_members.ec_contribution ;"
+      }
+    ]
+  },
+  {
+    "question": "Count the number of project members that are Educational Establishments",
+    "demonstrations": [
+      {
+        "input": "Count the number of project member roles",
+        "query": "SELECT count(*) FROM project_member_roles ;"
+      }
+    ]
+  },
+  {
+    "question": "How many projects have been related to Robotics?",
+    "demonstrations": [
+      {
+        "input": "How many topics are associated with Activity-2-2015?",
+        "query": "SELECT count(*) FROM topics WHERE topics.code = 'Activity-2-2015' ;"
+      }
+    ]
+  },
+  {
+    "question": "What is the number of projects that have been carried out in the subject area of Robotics?",
+    "demonstrations": [
+      {
+        "input": "What are the subject areas that have the title Scientific Research?",
+        "query": "SELECT subject_areas.description FROM subject_areas WHERE subject_areas.title = 'Scientific Research' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which non-EU entity has recieved the most funding through a project?",
+    "demonstrations": [
+      {
+        "input": "How many are the funding schemes with title 'CIP-Eco-Innovation - Thematic Networks-PIE (Pro Inno Europe)'?",
+        "query": "SELECT count(*) FROM funding_schemes WHERE funding_schemes.title = 'CIP-Eco-Innovation - Thematic Networks-PIE (Pro Inno Europe)' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which entity located outside of the EU has received the most funding?",
+    "demonstrations": [
+      {
+        "input": "How many are the funding schemes with title 'CIP-Eco-Innovation - Thematic Networks-PIE (Pro Inno Europe)'?",
+        "query": "SELECT count(*) FROM funding_schemes WHERE funding_schemes.title = 'CIP-Eco-Innovation - Thematic Networks-PIE (Pro Inno Europe)' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which non-EU entity has recieved the least funding through a project?",
+    "demonstrations": [
+      {
+        "input": "What are the subject areas of projects that don't have the ec fund scheme MSCA-IF-EF-ST",
+        "query": "SELECT subject_areas.title FROM subject_areas JOIN project_subject_areas ON subject_areas.code = project_subject_areas.subject_area JOIN projects ON project_subject_areas.project = projects.unics_id WHERE projects.ec_fund_scheme != 'MSCA-IF-EF-ST' ;"
+      }
+    ]
+  },
+  {
+    "question": "Which entity located outside of the EU has received the least funding?",
+    "demonstrations": [
+      {
+        "input": "How many funding schemes have the title 'ERC low value grant'?",
+        "query": "SELECT count(*) FROM funding_schemes WHERE funding_schemes.title = 'ERC low value grant' ;"
+      }
+    ]
+  },
+  {
+    "question": "How many non-EU entities have participated in projects?",
+    "demonstrations": [
+      {
+        "input": "How many descriptions are there for European Research Council panels?",
+        "query": "SELECT count(DISTINCT erc_panels.description) FROM project_erc_panels JOIN erc_panels ON project_erc_panels.panel = erc_panels.code ;"
+      }
+    ]
+  },
+  {
+    "question": "Which entities that are located outside of the European Union have participated in projects?",
+    "demonstrations": [
+      {
+        "input": "What is the activity type of project members that have an EC contribution in the country of DE?",
+        "query": "SELECT project_members.activity_type FROM project_members WHERE project_members.ec_contribution = 845948.88 AND project_members.country = 'DE' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show all of the programmes with titles that are related to climate",
+    "demonstrations": [
+      {
+        "input": "Show me the titles of all programme with code 'NMP-2009-4.0-4'",
+        "query": "SELECT programmes.title FROM programmes WHERE programmes.code = 'NMP-2009-4.0-4' ;"
+      }
+    ]
+  },
+  {
+    "question": "List the programms that have the term climate in the title",
+    "demonstrations": [
+      {
+        "input": "List the description of subject areas used in projects of the H2020 framework program",
+        "query": "SELECT subject_areas.description FROM subject_areas JOIN project_subject_areas ON subject_areas.code = project_subject_areas.subject_area JOIN projects ON project_subject_areas.project = projects.unics_id WHERE projects.framework_program = 'H2020' ;"
+      }
+    ]
+  },
+  {
+    "question": "Show the title and amount of funds that have been allocated per programme",
+    "demonstrations": [
+      {
+        "input": "Show me all the funding scheme titles",
+        "query": "SELECT funding_schemes.code FROM funding_schemes WHERE funding_schemes.title != 'Coordination of research actions' ;"
+      }
+    ]
+  },
+  {
+    "question": "List all of the titles and the amount of funding that has been dispersed per programme",
+    "demonstrations": [
+      {
+        "input": "Show me all the funding scheme titles",
+        "query": "SELECT funding_schemes.code FROM funding_schemes WHERE funding_schemes.title != 'Coordination of research actions' ;"
+      }
+    ]
+  }
+]

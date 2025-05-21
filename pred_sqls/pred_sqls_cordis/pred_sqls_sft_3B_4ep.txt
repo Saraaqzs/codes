@@ -1,0 +1,100 @@
+SELECT projects.total_cost FROM projects WHERE projects.title = 'Theseus'
+SELECT projects.total_cost FROM projects WHERE projects.title = 'Theseus'
+SELECT projects.acronym FROM projects WHERE projects.start_year = 2018
+SELECT projects.acronym FROM projects WHERE projects.start_year = 2018
+SELECT projects.title FROM projects WHERE projects.start_year != 2016
+SELECT projects.title FROM projects WHERE projects.start_year != 2016
+SELECT institutions.unics_id FROM institutions JOIN eu_territorial_units ON institutions.geocode_regions_3 = eu_territorial_units.geocode_regions WHERE eu_territorial_units.description = 'Nordjylland'
+SELECT institutions.institutions_name FROM institutions JOIN eu_territorial_units ON institutions.geocode_regions_3 = eu_territorial_units.geocode_regions WHERE eu_territorial_units.description = 'Nordjylland'
+SELECT people.full_name FROM people JOIN projects ON people.unics_id = projects.principal_investigator WHERE projects.start_year = 2014
+SELECT people.full_name FROM people JOIN projects ON people.unics_id = projects.principal_investigator WHERE projects.start_year = 2014
+SELECT subject_areas.code FROM subject_areas WHERE subject_areas.title = 'Mathematics and Statistics'
+SELECT subject_areas.code FROM subject_areas WHERE subject_areas.title = 'Mathematics and Statistics'
+SELECT topics.title FROM topics JOIN project_topics ON topics.code = project_topics.topic JOIN projects ON project_topics.project = projects.unics_id WHERE projects.end_year = 2014
+SELECT topics.title FROM topics JOIN project_topics ON topics.code = project_topics.topic JOIN projects ON project_topics.project = projects.unics_id WHERE projects.end_year = 2014
+SELECT projects.acronym FROM projects JOIN project_members ON projects.unics_id = project_members.project WHERE project_members.country = 'GR'
+SELECT institutions.institutions_name FROM institutions JOIN countries ON institutions.country_id = countries.unics_id WHERE countries.country_name = 'France' OR countries.country_name = 'Germany'
+SELECT institutions.institutions_name FROM institutions JOIN countries ON institutions.country_id = countries.unics_id WHERE countries.country_name != 'France'
+SELECT count(*) FROM projects WHERE projects.start_year = 2016
+SELECT projects.title FROM projects    ORDER BY projects.total_cost DESC LIMIT 1
+SELECT project_members.member_name FROM project_members JOIN projects ON project_members.project = projects.unics_id WHERE projects.total_cost != (SELECT avg(projects.total_cost) FROM projects)
+SELECT projects.unics_id FROM projects JOIN project_members ON projects.unics_id = project_members.project WHERE project_members.member_role = 'participant'
+SELECT funding_schemes.code FROM funding_schemes    ORDER BY funding_schemes.projects_count DESC LIMIT 1
+SELECT projects.total_cost FROM projects
+SELECT projects.title FROM projects WHERE projects.end_year != 2006 AND projects.start_year != 2006
+SELECT projects.end_year FROM projects    ORDER BY projects.end_year DESC LIMIT 1
+SELECT topics.title FROM topics WHERE topics.title = 'Raw materials'
+SELECT topics.title FROM topics WHERE topics.title = 'Climate change' OR topics.title = 'Global warming'
+SELECT count(*) FROM people WHERE people.full_name = 'Thomas Bell'
+SELECT people.full_name FROM people
+SELECT projects.acronym FROM projects WHERE projects.total_cost >= 100000.0 AND projects.total_cost <= 200000.0
+SELECT projects.title FROM projects WHERE projects.total_cost != 1000000.0
+SELECT projects.title FROM projects WHERE projects.total_cost != 1000000.0
+SELECT projects.title FROM projects JOIN project_members ON projects.unics_id = project_members.project WHERE project_members.member_role = 'partner'
+SELECT erc_research_domains.description, count(*) FROM erc_research_domains  GROUP BY erc_research_domains.description
+SELECT countries.country_name FROM countries JOIN institutions ON countries.unics_id = institutions.country_id
+SELECT countries.country_name FROM countries JOIN institutions ON countries.unics_id = institutions.country_id
+SELECT countries.country_code2, countries.country_code3 FROM countries WHERE countries.country_name = 'Andorra'
+SELECT funding_schemes.code FROM funding_schemes WHERE funding_schemes.title = 'Framework Partnership Agreement'
+SELECT programmes.title FROM programmes WHERE programmes.short_name = 'Transport'
+SELECT project_members.member_name, project_members.member_role FROM project_members JOIN projects ON project_members.project = projects.unics_id WHERE projects.acronym = 'GTBB'
+SELECT project_members.member_name, project_members.member_role FROM project_members WHERE project_members.ec_call = 'GTBB'
+SELECT programmes.title FROM programmes WHERE programmes.parent = 'FP7'
+SELECT programmes.title FROM programmes WHERE programmes.code = 'FP7'
+SELECT erc_panels.description FROM erc_panels JOIN erc_research_domains ON erc_panels.part_of = erc_research_domains.code WHERE erc_research_domains.description = 'Life Sciences'
+SELECT erc_panels.description FROM erc_panels JOIN erc_research_domains ON erc_panels.part_of = erc_research_domains.code WHERE erc_research_domains.description = 'Life Sciences'
+SELECT project_members.unics_id FROM project_members JOIN activity_types ON project_members.activity_type = activity_types.code WHERE activity_types.description != 'Research Organisations'
+SELECT project_members.member_name FROM project_members JOIN activity_types ON project_members.activity_type = activity_types.code WHERE activity_types.description = 'Research Organisations'
+SELECT projects.objective FROM projects WHERE projects.acronym = 'DEEPCARBON'
+SELECT projects.objective FROM projects WHERE projects.acronym = 'DEEPCARBON'
+SELECT projects.title FROM projects WHERE projects.objective = 'Carbon capturing'
+SELECT count(*) FROM projects WHERE projects.objective = 'carbon capturing'
+SELECT institutions.institutions_name FROM institutions JOIN eu_territorial_units ON institutions.geocode_regions_3 = eu_territorial_units.geocode_regions JOIN countries ON countries.unics_id = institutions.country_id WHERE countries.country_name != 'France' AND eu_territorial_units.description != 'Paris'
+SELECT institutions.unics_id FROM institutions JOIN countries ON institutions.country_id = countries.unics_id WHERE countries.country_name != 'France' AND institutions.institutions_name != 'PARIS'
+SELECT institutions.unics_id FROM institutions JOIN project_members ON institutions.unics_id = project_members.institution_id WHERE project_members.member_role != 'coordinator'
+SELECT institutions.unics_id FROM institutions JOIN project_members ON institutions.unics_id = project_members.institution_id WHERE project_members.member_role != 'coordinator'
+SELECT people.full_name FROM people JOIN projects ON people.unics_id = projects.principal_investigator GROUP BY people.full_name
+SELECT people.full_name, count(*) FROM people  GROUP BY people.full_name
+SELECT subject_areas.title FROM subject_areas    ORDER BY subject_areas.ec_max_contribution DESC LIMIT 1
+SELECT subject_areas.title, sum(projects.total_cost) FROM subject_areas JOIN project_subject_areas ON subject_areas.code = project_subject_areas.subject_area JOIN projects ON project_subject_areas.project = projects.unics_id  GROUP BY subject_areas.title
+SELECT subject_areas.title, count(*) FROM subject_areas  GROUP BY subject_areas.title
+SELECT subject_areas.title FROM subject_areas    ORDER BY subject_areas.ec_max_contribution DESC LIMIT 1
+SELECT count(*) FROM project_members WHERE project_members.member_role = 'participant'
+SELECT projects.principal_investigator FROM projects    ORDER BY projects.principal_investigator DESC LIMIT 1
+SELECT count(*) FROM project_members WHERE project_members.member_role = 'participant'
+SELECT institutions.unics_id FROM institutions JOIN projects ON institutions.unics_id = projects.principal_investigator    ORDER BY projects.unics_id DESC LIMIT 1
+SELECT funding_schemes.code, count(*) FROM funding_schemes  GROUP BY funding_schemes.code
+SELECT funding_schemes.code FROM funding_schemes    ORDER BY funding_schemes.total_cost DESC LIMIT 1
+SELECT projects.ec_max_contribution, count(*) FROM projects  GROUP BY projects.ec_max_contribution
+SELECT projects.total_cost, count(DISTINCT people.full_name) FROM projects JOIN people ON projects.principal_investigator = people.unics_id  GROUP BY projects.total_cost
+SELECT projects.title, projects.start_year FROM projects    ORDER BY projects.start_year DESC LIMIT 1
+SELECT projects.start_date, count(*) FROM projects  GROUP BY projects.start_date
+SELECT projects.title, projects.start_year FROM projects    ORDER BY projects.start_year DESC LIMIT 1
+SELECT projects.start_date, count(*) FROM projects  GROUP BY projects.start_date
+SELECT projects.start_date FROM projects    ORDER BY projects.start_date DESC LIMIT 1
+SELECT projects.start_date FROM projects    ORDER BY projects.start_date DESC LIMIT 1
+SELECT subject_areas.title FROM subject_areas WHERE subject_areas.description = 'Climate change and Carbon cycle research'
+SELECT subject_areas.title FROM subject_areas WHERE subject_areas.code = 'CCC'
+SELECT project_member_roles.code FROM project_member_roles JOIN project_members ON project_member_roles.code = project_members.member_role WHERE project_members.member_role != 'participant'
+SELECT project_members.unics_id FROM project_members WHERE project_members.member_role = 'participant'
+SELECT count(*) FROM erc_research_domains WHERE erc_research_domains.description = 'Life Sciences'
+SELECT count(DISTINCT erc_panels.description) FROM erc_research_domains JOIN erc_panels ON erc_research_domains.code = erc_panels.part_of WHERE erc_research_domains.description = 'Life Sciences'
+SELECT erc_panels.code FROM erc_panels WHERE erc_panels.description = 'Social Sciences and Humanities'
+SELECT count(*) FROM erc_panels WHERE erc_panels.description = 'Social Sciences and Humanities'
+SELECT project_members.unics_id FROM project_members WHERE project_members.member_role = 'privateForProfit'
+SELECT project_members.member_role FROM project_members WHERE project_members.member_name = 'Business'
+SELECT count(*) FROM project_members WHERE project_members.member_role = 'business'
+SELECT count(*) FROM project_members WHERE project_members.department_name = 'Higher or Secondary Education Establishments'
+SELECT count(*) FROM project_members WHERE project_members.department_name = 'Educational Establishments'
+SELECT count(*) FROM subject_areas WHERE subject_areas.title = 'Robotics'
+SELECT count(*) FROM subject_areas WHERE subject_areas.title = 'Robotics'
+SELECT projects.ec_max_contribution, count(*) FROM projects  GROUP BY projects.ec_max_contribution
+SELECT projects.ec_max_contribution, count(*) FROM projects  GROUP BY projects.ec_max_contribution
+SELECT projects.ec_max_contribution, count(*) FROM projects  GROUP BY projects.ec_max_contribution
+SELECT projects.ec_max_contribution FROM projects    ORDER BY projects.ec_max_contribution DESC LIMIT 1
+SELECT count(*) FROM project_members WHERE project_members.member_role = 'participant'
+SELECT projects.ec_call FROM projects JOIN project_members ON projects.unics_id = project_members.project WHERE project_members.country != 'EU'
+SELECT programmes.title FROM programmes WHERE programmes.short_name = 'Climate change'
+SELECT programmes.rcn FROM programmes WHERE programmes.title = 'Climate change'
+SELECT programmes.title, sum(projects.total_cost) FROM programmes JOIN project_programmes ON programmes.code = project_programmes.programme JOIN projects ON project_programmes.project = projects.unics_id  GROUP BY programmes.title
+SELECT programmes.title, count(*) FROM programmes  GROUP BY programmes.title
