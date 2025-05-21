@@ -6,6 +6,14 @@ pred_sqls_15B_1S_sdss.txt
 EX score: 0.36
 EX score (strict): 0.34
 
+pred_sqls_15B_3S_reduced_4_15_sdss.txt
+EX score: 0.35
+EX score (strict): 0.31
+
+pred_sqls_15B_3S_reduced_sdss.txt
+EX score: 0.23
+EX score (strict): 0.21
+
 pred_sqls_15B_3S_sdss.txt
 EX score: 0.04
 EX score (strict): 0.04
@@ -18,6 +26,10 @@ pred_sqls_3B_1S_sdss.txt
 EX score: 0.26
 EX score (strict): 0.24
 
+pred_sqls_3B_3S_reduced_4_15_sdss.txt
+EX score: 0.32
+EX score (strict): 0.25
+
 pred_sqls_3B_5S_sdss.txt
 EX score: 0.24
 EX score (strict): 0.22
@@ -29,6 +41,22 @@ EX score (strict): 0.17
 pred_sqls_7B_1S_sdss.txt
 EX score: 0.31
 EX score (strict): 0.3
+
+pred_sqls_7B_3S_adapted2_sdss.txt
+EX score: 0.3
+EX score (strict): 0.26
+
+pred_sqls_7B_3S_adapted_sdss.txt
+EX score: 0.25
+EX score (strict): 0.21
+
+pred_sqls_7B_3S_reduced2_sdss.txt
+EX score: 0.38
+EX score (strict): 0.34
+
+pred_sqls_7B_3S_reduced_4_15_sdss.txt
+EX score: 0.39
+EX score (strict): 0.36
 
 pred_sqls_7B_3S_sdss.txt
 EX score: 0.38
