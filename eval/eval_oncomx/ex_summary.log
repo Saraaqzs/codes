@@ -1,3 +1,4 @@
+
 pred_sqls_15B_0S_oncomx.txt
 EX score: 0.21212121212121213
 EX score (strict): 0.20202020202020202
@@ -22,6 +23,10 @@ pred_sqls_3B_1S_oncomx.txt
 EX score: 0.45454545454545453
 EX score (strict): 0.45454545454545453
 
+pred_sqls_3B_3S_reduced_10_10_oncomx.txt
+EX score: 0.5454545454545454
+EX score (strict): 0.5353535353535354
+
 pred_sqls_3B_5S_oncomx.txt
 EX score: 0.45454545454545453
 EX score (strict): 0.45454545454545453
@@ -36,6 +41,10 @@ EX score (strict): 0.5656565656565656
 
 pred_sqls_7B_3S_adapted_oncomx.txt
 EX score: 0.5656565656565656
+EX score (strict): 0.5454545454545454
+
+pred_sqls_7B_3S_reduced_10_10_oncomx.txt
+EX score: 0.5555555555555556
 EX score (strict): 0.5454545454545454
 
 pred_sqls_7B_5S_oncomx.txt
